@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-**JOB ENTRY 1.0.0** is a job application and career management platform designed to help students and job seekers organize, track, and improve their job search process.
+**HireHub** is a job application and career management platform designed to help students and job seekers organize, track, and improve their job search process.
 
 The platform provides a centralized place to manage job applications, resumes, application progress, and career preparation.
 
