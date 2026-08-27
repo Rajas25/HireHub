@@ -1,160 +1,58 @@
-# HireHub
+# 🚀 HireHub – Job Portal Platform
 
-## 📌 Overview
+**HireHub** is a modern, fully responsive job portal website designed to connect job seekers with employers. It features a clean UI, job listings, resume analysis, testimonials, and a smart intro overlay that plays on first visit and page refresh—just like LinkedIn.
 
-**HireHub** is a job application and career management platform designed to help students and job seekers organize, track, and improve their job search process.
+<img width="1667" height="1006" alt="image" src="https://github.com/user-attachments/assets/593c681c-5b15-45aa-ae53-6bcfbd570935" />
 
-The platform provides a centralized place to manage job applications, resumes, application progress, and career preparation.
 
-## 🚀 Features
+---
 
-* 👤 User profile management
-* 📄 Resume management
-* 🔍 Job search and job listing management
-* 📊 Job application tracking
-* 📌 Application status tracking
-* 🎯 Career roadmap and progress tracking
-* 📈 Dashboard for application insights
-* 📝 Resume analysis and ATS score
-* 🔐 User authentication
-* 📱 Responsive user interface
+## ✨ Features
 
-## 🛠️ Technology Stack
+- 🏠 **Landing Page** – Hero carousel, category explorer, job search bar
+- 📄 **Job Listings** – Filter by Featured, Full‑Time, Part‑Time
+- 📝 **Job Detail** – Full job description, application form, company info
+- 👥 **About Us** – Team introduction with background image
+- 💬 **Testimonials** – Client feedback carousel
+- 📊 **Resume Analyzer** – Upload PDF/DOCX/TXT, get instant skill analysis and improvement tips (client‑side)
+- 📞 **Contact** – Contact form (non‑functional, ready for backend integration)
+- 🎬 **Smart Intro Overlay** – Plays a promotional video on first visit and page refresh, but not during normal navigation (sessionStorage)
 
-### Frontend
+---
 
-* React
-* TypeScript
-* Tailwind CSS
-* Framer Motion
+## 🛠️ Tech Stack
 
-### Backend
+- **HTML5** – Semantic structure
+- **CSS3** – Custom styling with Prussian blue (#003153) theme
+- **Bootstrap 5** – Responsive grid and components
+- **JavaScript (ES6)** – Interactivity, intro overlay logic, resume parser
+- **Libraries**:
+  - [Font Awesome](https://fontawesome.com/) – Icons
+  - [Owl Carousel](https://owlcarousel2.github.io/OwlCarousel2/) – Testimonials & hero carousel
+  - [Animate.css](https://animate.style/) – Animations
+  - [PDF.js](https://mozilla.github.io/pdf.js/) – PDF text extraction (client‑side)
+  - [Mammoth.js](https://github.com/mwilliamson/mammoth.js) – DOCX text extraction
 
-* Python
-* FastAPI
+---
 
-### Database
+## 📁 Project Structure
+hirehub/
+├── index.html # Home page
+├── about.html # About us
+├── job-list.html # Job listings
+├── job-detail.html # Job detail view
+├── testimonial.html # Testimonials
+├── contact.html # Contact page
+├── Resume.html # Resume Analyzer
+├── 404.html → Resume.html # (renamed)
+├── promo.mp4 # Intro video
+├── 1000810916.jpg # Logo image
+├── img/ # All other images (carousel, company logos, about, etc.)
+├── css/ # Bootstrap and custom styles
+├── js/ # Custom JavaScript (main.js)
+├── lib/ # Third‑party libraries
+└── README.md # This file
 
-* MongoDB
 
-### Authentication
+<img width="1767" height="987" alt="image" src="https://github.com/user-attachments/assets/2c2eb528-1203-4bd0-9e17-b429a571770a" />
 
-* JWT Authentication
-
-### Development Tools
-
-* Git
-* GitHub
-* VS Code
-
-## 📂 Project Structure
-
-```text
-JOB ENTRY-1.0.0/
-│
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── ...
-│
-├── backend/
-│   ├── app/
-│   ├── requirements.txt
-│   └── ...
-│
-├── README.md
-└── ...
-```
-
-> The exact structure may vary depending on the current implementation.
-
-## ⚙️ Installation
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/Rajas25/HireHub.git
-cd HireHub
-```
-
-### 2. Set up the frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-### 3. Set up the backend
-
-Open another terminal:
-
-```bash
-cd backend
-pip install -r requirements.txt
-```
-
-Start the FastAPI server:
-
-```bash
-uvicorn main:app --reload
-```
-
-## 🔑 Environment Variables
-
-Create a `.env` file in the backend directory and add the required environment variables.
-
-Example:
-
-```env
-MONGODB_URL=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-```
-
-Do **not** commit `.env` files or secret credentials to GitHub.
-
-## 📊 Core Modules
-
-### Job Management
-
-Allows users to organize job opportunities and keep track of applications.
-
-### Application Tracking
-
-Users can monitor applications through different stages such as:
-
-```text
-Applied → Screening → Interview → Selected / Rejected
-```
-
-### Resume Analysis
-
-Provides resume evaluation and an ATS-oriented score to help users identify areas for improvement.
-
-### Career Roadmap
-
-Helps users organize their career preparation and track progress toward their goals.
-
-## 🎯 Objective
-
-The objective of JOB ENTRY 1.0.0 is to make the job-search process more organized and manageable by bringing job discovery, application tracking, resume improvement, and career planning into one platform.
-
-## 🔮 Future Enhancements
-
-* Personalized job recommendations
-* Interview preparation
-* Skill-gap analysis
-* Email notifications
-* Advanced analytics
-* Company insights
-* Calendar integration
-* Mobile application
-
-## 👨‍💻 Development
-
-This project is developed as a software project focused on improving the job application experience for students and job seekers.
-
-## 📄 License
-
-This project is intended for educational and development purposes.
