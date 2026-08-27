@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>HireHub - Testimonials</title>
+    <title>HireHub - Resume Analyzer</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -30,9 +30,12 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- Internal CSS: HireHub branding + Intro Overlay -->
+    <!-- Include PDF.js and Mammoth.js for file parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+
     <style>
-        /* ===== PRUSSIAN BLUE PRIMARY ===== */
+        /* Prussian Blue: #003153 */
         .text-primary,
         .navbar-brand h1.text-primary,
         .cat-item i.text-primary,
@@ -101,14 +104,13 @@
             border-color: #0f172a !important;
         }
 
-        /* ===== NAVBAR BRAND WITH LOGO ===== */
+        /* Navbar brand with logo */
         .navbar-brand {
             display: flex;
             align-items: center;
             gap: 10px;
             padding: 8px 0;
             text-decoration: none;
-            transition: opacity 0.3s ease;
         }
 
         .navbar-brand .logo-img {
@@ -173,7 +175,7 @@
             color: #fff !important;
         }
 
-        /* ===== PAGE HEADER WITH BACKGROUND IMAGE ===== */
+        /* Page Header */
         .page-header {
             background: linear-gradient(rgba(0, 49, 83, 0.78), rgba(0, 49, 83, 0.88)),
                 url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=400&fit=crop&crop=center');
@@ -197,41 +199,70 @@
             color: #fff !important;
         }
 
-        /* ===== TESTIMONIAL CARDS ===== */
-        .testimonial-item {
-            transition: all 0.3s ease;
+        /* Analyzer Section */
+        .analyzer-card {
             border: 1px solid #e9ecef;
-            background: #ffffff;
             border-radius: 12px;
-            padding: 30px 25px;
-            margin: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            padding: 30px;
+            transition: all 0.3s ease;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        .testimonial-item:hover {
-            box-shadow: 0 8px 30px rgba(0, 49, 83, 0.10);
-            transform: translateY(-4px);
+        .analyzer-card:hover {
+            box-shadow: 0 8px 30px rgba(0,49,83,0.08);
+        }
+
+        .analyzer-card .drop-zone {
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .analyzer-card .drop-zone:hover,
+        .analyzer-card .drop-zone.dragover {
             border-color: #003153;
+            background: #f8f9fa;
         }
 
-        .testimonial-item i.fa-quote-left {
-            color: #003153 !important;
-            opacity: 0.3;
-            font-size: 2rem;
+        .analyzer-card .drop-zone i {
+            font-size: 3rem;
+            color: #003153;
+            opacity: 0.6;
         }
 
-        .testimonial-item p {
-            font-style: italic;
-            color: #4a5568;
-            line-height: 1.7;
-            margin-bottom: 20px;
+        .analyzer-card .drop-zone p {
+            margin-top: 10px;
+            color: #6c757d;
         }
 
-        .testimonial-item .d-flex img {
-            border: 2px solid #e9ecef;
+        .result-item {
+            border-bottom: 1px solid #f0f0f0;
+            padding: 12px 0;
         }
 
-        /* ===== INTRO OVERLAY ===== */
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .score-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #003153;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        /* Intro Overlay */
         #introOverlay {
             position: fixed;
             top: 0;
@@ -279,7 +310,7 @@
             height: auto;
             margin-bottom: 20px;
             border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
             animation: introFloat 3s ease-in-out infinite;
         }
 
@@ -289,7 +320,7 @@
             color: #fff;
             letter-spacing: -1px;
             margin-bottom: 8px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .intro-content h1 span {
@@ -298,7 +329,7 @@
 
         .intro-content .tagline {
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
             letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 300;
@@ -307,7 +338,7 @@
         .intro-content .loader-bar {
             width: 200px;
             height: 3px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255,255,255,0.15);
             border-radius: 2px;
             margin: 30px auto 0;
             overflow: hidden;
@@ -326,9 +357,9 @@
             bottom: 40px;
             right: 40px;
             z-index: 3;
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255,255,255,0.12);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.2);
             color: #fff;
             padding: 10px 28px;
             border-radius: 30px;
@@ -340,7 +371,7 @@
         }
 
         .intro-skip:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255,255,255,0.25);
             transform: scale(1.04);
         }
 
@@ -360,72 +391,27 @@
             100% { width: 100%; }
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 991.98px) {
-            .navbar-brand .logo-img {
-                height: 34px;
-            }
-            .navbar-brand h1 {
-                font-size: 1.3rem;
-            }
-            .navbar-brand small {
-                font-size: 0.5rem !important;
-                letter-spacing: 1.5px;
-            }
-            .navbar-brand {
-                gap: 8px;
-            }
-            .page-header {
-                padding: 50px 0;
-                margin-bottom: 40px;
-            }
-            .intro-content h1 {
-                font-size: 2.5rem;
-            }
-            .intro-content .intro-logo {
-                width: 100px;
-            }
-            .intro-skip {
-                bottom: 20px;
-                right: 20px;
-                padding: 8px 20px;
-                font-size: 0.75rem;
-            }
+            .navbar-brand .logo-img { height: 34px; }
+            .navbar-brand h1 { font-size: 1.3rem; }
+            .navbar-brand small { font-size: 0.5rem !important; letter-spacing: 1.5px; }
+            .navbar-brand { gap: 8px; }
+            .page-header { padding: 50px 0; margin-bottom: 40px; }
+            .intro-content h1 { font-size: 2.5rem; }
+            .intro-content .intro-logo { width: 100px; }
+            .intro-skip { bottom: 20px; right: 20px; padding: 8px 20px; font-size: 0.75rem; }
         }
 
         @media (max-width: 575.98px) {
-            .navbar-brand .logo-img {
-                height: 28px;
-            }
-            .navbar-brand h1 {
-                font-size: 1.1rem;
-            }
-            .navbar-brand small {
-                display: none !important;
-            }
-            .navbar-brand {
-                gap: 6px;
-            }
-            .page-header {
-                padding: 30px 0;
-                margin-bottom: 30px;
-            }
-            .intro-content h1 {
-                font-size: 1.8rem;
-            }
-            .intro-content .intro-logo {
-                width: 80px;
-            }
-            .intro-content .tagline {
-                font-size: 0.8rem;
-                letter-spacing: 2px;
-            }
-            .intro-skip {
-                bottom: 15px;
-                right: 15px;
-                padding: 6px 16px;
-                font-size: 0.7rem;
-            }
+            .navbar-brand .logo-img { height: 28px; }
+            .navbar-brand h1 { font-size: 1.1rem; }
+            .navbar-brand small { display: none !important; }
+            .navbar-brand { gap: 6px; }
+            .page-header { padding: 30px 0; margin-bottom: 30px; }
+            .intro-content h1 { font-size: 1.8rem; }
+            .intro-content .intro-logo { width: 80px; }
+            .intro-content .tagline { font-size: 0.8rem; letter-spacing: 2px; }
+            .intro-skip { bottom: 15px; right: 15px; padding: 6px 16px; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -487,8 +473,8 @@
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="category.html" class="dropdown-item">Job Category</a>
-                            <a href="testimonial.html" class="dropdown-item active">Testimonial</a>
-                            <a href="Resume.html" class="dropdown-item">Resume Analyzer</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            <a href="resume-analyzer.html" class="dropdown-item active">Resume Analyzer</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -502,12 +488,12 @@
         <!-- Header End -->
         <div class="container-xxl py-5 page-header mb-5">
             <div class="container my-5 pt-5 pb-4">
-                <h1 class="display-3 text-white mb-3 animated slideInDown">Testimonials</h1>
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Resume Analyzer</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb text-uppercase">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Testimonial</li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Resume Analyzer</li>
                     </ol>
                 </nav>
             </div>
@@ -515,59 +501,50 @@
         <!-- Header End -->
 
 
-        <!-- Testimonial Start -->
+        <!-- ===== RESUME ANALYZER SECTION ===== -->
         <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container">
-                <h1 class="text-center mb-5">What Our Clients Say</h1>
-                <div class="owl-carousel testimonial-carousel">
-                    <div class="testimonial-item bg-white rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>"HireHub completely transformed our hiring process. We found top-tier candidates in record time, and the platform's intuitive design made everything effortless. Highly recommended!"</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-1.jpg" style="width: 50px; height: 50px;">
-                            <div class="ps-3">
-                                <h5 class="mb-1">Sarah Mitchell</h5>
-                                <small>VP of Talent Acquisition</small>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="analyzer-card">
+                            <h2 class="text-center mb-4">Upload Your Resume</h2>
+                            <p class="text-center text-muted mb-4">We'll analyze your resume and give you a detailed score with improvement tips.</p>
+
+                            <!-- File Upload Area -->
+                            <div id="dropZone" class="drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p><strong>Drag & drop your resume here</strong><br>or click to browse (PDF, DOCX, TXT)</p>
+                                <input type="file" id="fileInput" accept=".pdf,.docx,.txt" style="display:none;">
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-white rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>"I landed my dream job within two weeks of using HireHub. The personalized job recommendations and easy application process made all the difference. I'm so grateful!"</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-2.jpg" style="width: 50px; height: 50px;">
-                            <div class="ps-3">
-                                <h5 class="mb-1">James Rodriguez</h5>
-                                <small>Software Engineer</small>
+                            <div class="text-center mt-3">
+                                <button class="btn btn-primary" id="analyzeBtn" disabled>Analyze Resume</button>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-white rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>"As a startup founder, finding the right talent is critical. HireHub connected us with passionate, skilled professionals who truly fit our culture. It's been a game-changer."</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-3.jpg" style="width: 50px; height: 50px;">
-                            <div class="ps-3">
-                                <h5 class="mb-1">Emily Chen</h5>
-                                <small>CEO, TechSpark</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item bg-white rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>"The support team at HireHub is amazing – they helped us every step of the way. We've now filled three critical roles with exceptional candidates. Couldn't be happier."</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded" src="img/testimonial-4.jpg" style="width: 50px; height: 50px;">
-                            <div class="ps-3">
-                                <h5 class="mb-1">Michael Okafor</h5>
-                                <small>HR Director</small>
+
+                            <!-- Results Area -->
+                            <div id="results" style="display: none; margin-top: 40px;">
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <div class="score-circle" id="scoreCircle">0</div>
+                                        <h5>Overall Score</h5>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h5>Analysis Details</h5>
+                                        <div id="analysisDetails">
+                                            <div class="result-item"><strong>📌 Skills Found:</strong> <span id="skillsFound">-</span></div>
+                                            <div class="result-item"><strong>📝 Experience Level:</strong> <span id="experienceLevel">-</span></div>
+                                            <div class="result-item"><strong>🎓 Education:</strong> <span id="educationInfo">-</span></div>
+                                            <div class="result-item"><strong>💡 Suggestions:</strong> <span id="suggestions">-</span></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Testimonial End -->
+        <!-- ===== RESUME ANALYZER END ===== -->
 
 
         <!-- Footer Start -->
@@ -705,6 +682,211 @@
                 overlay.style.display = 'none';
             }
         });
+    </script>
+
+    <!-- ===== RESUME ANALYZER SCRIPT ===== -->
+    <script>
+        (function() {
+            const dropZone = document.getElementById('dropZone');
+            const fileInput = document.getElementById('fileInput');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const resultsDiv = document.getElementById('results');
+            const scoreCircle = document.getElementById('scoreCircle');
+            const skillsFound = document.getElementById('skillsFound');
+            const experienceLevel = document.getElementById('experienceLevel');
+            const educationInfo = document.getElementById('educationInfo');
+            const suggestions = document.getElementById('suggestions');
+
+            let uploadedFile = null;
+
+            // --- Drag & Drop ---
+            dropZone.addEventListener('click', function() {
+                fileInput.click();
+            });
+
+            dropZone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('dragover');
+            });
+
+            dropZone.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+            });
+
+            dropZone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+                if (e.dataTransfer.files.length) {
+                    handleFile(e.dataTransfer.files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', function() {
+                if (this.files.length) {
+                    handleFile(this.files[0]);
+                }
+            });
+
+            function handleFile(file) {
+                const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
+                const ext = file.name.split('.').pop().toLowerCase();
+                if (!['pdf', 'docx', 'txt'].includes(ext)) {
+                    alert('Please upload a PDF, DOCX, or TXT file.');
+                    return;
+                }
+                uploadedFile = file;
+                analyzeBtn.disabled = false;
+                dropZone.innerHTML = `
+                    <i class="fas fa-file-alt" style="font-size:2.5rem; color:#003153;"></i>
+                    <p><strong>${file.name}</strong><br>${(file.size / 1024).toFixed(1)} KB — Click to change</p>
+                `;
+            }
+
+            // --- Analyze ---
+            analyzeBtn.addEventListener('click', function() {
+                if (!uploadedFile) return;
+                analyzeBtn.disabled = true;
+                analyzeBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Analyzing...';
+
+                const reader = new FileReader();
+                const fileType = uploadedFile.name.split('.').pop().toLowerCase();
+
+                if (fileType === 'txt') {
+                    reader.onload = function(e) {
+                        const text = e.target.result;
+                        performAnalysis(text);
+                    };
+                    reader.readAsText(uploadedFile);
+                } else if (fileType === 'pdf') {
+                    const fileReader = new FileReader();
+                    fileReader.onload = function(e) {
+                        const typedarray = new Uint8Array(e.target.result);
+                        pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
+                            let fullText = '';
+                            let pages = pdf.numPages;
+                            let promises = [];
+                            for (let i = 1; i <= pages; i++) {
+                                promises.push(pdf.getPage(i).then(function(page) {
+                                    return page.getTextContent().then(function(textContent) {
+                                        let pageText = textContent.items.map(function(item) {
+                                            return item.str;
+                                        }).join(' ');
+                                        fullText += pageText + ' ';
+                                    });
+                                }));
+                            }
+                            Promise.all(promises).then(function() {
+                                performAnalysis(fullText);
+                            });
+                        }).catch(function(err) {
+                            alert('Could not parse PDF: ' + err.message);
+                            resetButton();
+                        });
+                    };
+                    fileReader.readAsArrayBuffer(uploadedFile);
+                } else if (fileType === 'docx') {
+                    const fileReader = new FileReader();
+                    fileReader.onload = function(e) {
+                        const arrayBuffer = e.target.result;
+                        mammoth.extractRawText({ arrayBuffer: arrayBuffer })
+                            .then(function(result) {
+                                performAnalysis(result.value);
+                            })
+                            .catch(function(err) {
+                                alert('Could not parse DOCX: ' + err.message);
+                                resetButton();
+                            });
+                    };
+                    fileReader.readAsArrayBuffer(uploadedFile);
+                } else {
+                    alert('Unsupported file type.');
+                    resetButton();
+                }
+            });
+
+            function performAnalysis(text) {
+                if (!text || text.trim().length === 0) {
+                    alert('No text could be extracted from the resume. Please try another file.');
+                    resetButton();
+                    return;
+                }
+
+                // --- Simulate backend analysis ---
+                const words = text.toLowerCase();
+                // Skill keywords (simple list)
+                const skillKeywords = ['python', 'java', 'javascript', 'react', 'angular', 'vue', 'node', 'express', 'django', 'flask', 'sql', 'mongodb', 'postgresql', 'aws', 'azure', 'gcp', 'docker', 'kubernetes', 'git', 'linux', 'agile', 'scrum', 'leadership', 'project management', 'teamwork', 'communication', 'problem solving', 'critical thinking', 'creative', 'analytical', 'research', 'writing', 'public speaking', 'presentation', 'time management', 'organization', 'customer service', 'sales', 'marketing', 'seo', 'sem', 'content creation', 'social media', 'data analysis', 'machine learning', 'artificial intelligence', 'cloud computing', 'cybersecurity', 'networking', 'c++', 'c#', 'ruby', 'php', 'html', 'css', 'bootstrap', 'tailwind', 'typescript', 'redux', 'nextjs', 'gatsby', 'wordpress', 'shopify', 'ui/ux', 'figma', 'sketch', 'adobe xd', 'photoshop', 'illustrator', 'indesign', 'after effects', 'premiere pro', 'final cut', 'autocad', 'solidworks', 'blender', '3ds max', 'maya', 'unity', 'unreal engine', 'game design', 'animation', 'motion graphics', 'video editing', 'photography', 'event planning', 'public relations', 'branding', 'advertising', 'copywriting', 'editing', 'proofreading', 'translation', 'research', 'analysis', 'problem solving', 'creative thinking', 'decision making', 'adaptability', 'collaboration', 'interpersonal', 'active listening', 'empathy', 'negotiation', 'presentation', 'report writing', 'data visualization', 'excel', 'power bi', 'tableau', 'quickbooks', 'xero', 'salesforce', 'hubspot', 'zoho', 'slack', 'trello', 'asana', 'jira', 'confluence', 'notion', 'zoom', 'teams', 'skype', 'google workspace', 'microsoft office', 'windows', 'macos', 'ios', 'android'];
+
+                const foundSkills = skillKeywords.filter(skill => words.includes(skill));
+                const skillCount = foundSkills.length;
+
+                // Experience level: approximate by keywords
+                let exp = 'Entry Level';
+                if (words.includes('senior') || words.includes('lead') || words.includes('manager') || words.includes('director') || words.includes('head of')) {
+                    exp = 'Senior/Lead';
+                } else if (words.includes('mid') || words.includes('intermediate') || words.includes('3 years') || words.includes('5 years')) {
+                    exp = 'Mid-Level';
+                } else if (words.includes('entry') || words.includes('junior') || words.includes('associate') || words.includes('intern')) {
+                    exp = 'Entry Level';
+                }
+
+                // Education detection
+                let edu = 'Not Specified';
+                if (words.includes('bachelor') || words.includes('ba') || words.includes('bs') || words.includes('b.sc')) {
+                    edu = 'Bachelor\'s Degree';
+                }
+                if (words.includes('master') || words.includes('ma') || words.includes('ms') || words.includes('m.sc')) {
+                    edu = 'Master\'s Degree';
+                }
+                if (words.includes('phd') || words.includes('doctorate')) {
+                    edu = 'PhD/Doctorate';
+                }
+                if (words.includes('high school') || words.includes('ged') || words.includes('diploma')) {
+                    edu = 'High School / Diploma';
+                }
+
+                // Suggestions
+                let suggestionList = [];
+                if (skillCount < 5) {
+                    suggestionList.push('Add more relevant skills to your resume.');
+                }
+                if (!words.includes('experience') && !words.includes('employment') && !words.includes('work')) {
+                    suggestionList.push('Include a clear work experience section.');
+                }
+                if (!words.includes('education') && !words.includes('degree') && !words.includes('school')) {
+                    suggestionList.push('Add your educational background.');
+                }
+                if (words.split(' ').length < 100) {
+                    suggestionList.push('Your resume is quite short. Consider adding more detail about your accomplishments.');
+                }
+                if (words.includes('objective') && !words.includes('summary')) {
+                    suggestionList.push('Replace the "Objective" with a "Professional Summary" for better impact.');
+                }
+                if (suggestionList.length === 0) {
+                    suggestionList.push('Your resume looks great! Consider tailoring it for specific job applications.');
+                }
+
+                // Overall score: based on skill count, experience, education
+                let score = Math.min(100, Math.round((skillCount / 10) * 30 + 20 + (exp === 'Senior/Lead' ? 25 : (exp === 'Mid-Level' ? 15 : 5)) + (edu.includes('Master') ? 20 : (edu.includes('Bachelor') ? 10 : 5))));
+                if (score < 30) score = 30;
+                if (score > 95) score = 95;
+
+                // Update UI
+                scoreCircle.textContent = score + '%';
+                skillsFound.textContent = skillCount > 0 ? foundSkills.slice(0, 8).join(', ') + (skillCount > 8 ? ' ...' : '') : 'No specific skills identified';
+                experienceLevel.textContent = exp;
+                educationInfo.textContent = edu;
+                suggestions.textContent = suggestionList.join(' ');
+
+                resultsDiv.style.display = 'block';
+                resetButton();
+            }
+
+            function resetButton() {
+                analyzeBtn.disabled = false;
+                analyzeBtn.innerHTML = 'Analyze Resume';
+            }
+        })();
     </script>
 </body>
 
