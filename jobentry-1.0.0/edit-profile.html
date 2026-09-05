@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HireHub - Edit Profile</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Internal CSS (same as other pages) -->
+    <style>
+        /* ===== PRUSSIAN BLUE PRIMARY ===== */
+        .text-primary,
+        .navbar-brand h1.text-primary,
+        .cat-item i.text-primary,
+        .job-item .text-primary,
+        .btn-link.text-primary,
+        .fa-check.text-primary,
+        .nav-link.active,
+        .dropdown-item.active,
+        .dropdown-item:active,
+        .bg-white.border.rounded i.text-primary,
+        .footer .btn-link:hover {
+            color: #003153 !important;
+        }
+
+        .bg-primary,
+        .btn-primary,
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary:focus,
+        .navbar .btn-primary,
+        .btn-primary.disabled,
+        .btn-primary:disabled,
+        .spinner-border.text-primary,
+        .page-header.bg-dark {
+            background-color: #003153 !important;
+            border-color: #003153 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #002244 !important;
+            border-color: #002244 !important;
+        }
+
+        .btn-outline-primary {
+            color: #003153 !important;
+            border-color: #003153 !important;
+        }
+        .btn-outline-primary:hover {
+            background-color: #003153 !important;
+            border-color: #003153 !important;
+            color: #fff !important;
+        }
+
+        .border-primary {
+            border-color: #003153 !important;
+        }
+
+        .navbar .navbar-nav .nav-link.active,
+        .navbar .navbar-nav .nav-link:hover {
+            color: #003153 !important;
+        }
+
+        .dropdown-item:focus,
+        .dropdown-item:hover {
+            background-color: #d4e0ed;
+            color: #003153 !important;
+        }
+
+        .btn-dark {
+            background-color: #1e293b !important;
+            border-color: #1e293b !important;
+        }
+        .btn-dark:hover {
+            background-color: #0f172a !important;
+            border-color: #0f172a !important;
+        }
+
+        /* ===== NAVBAR BRAND ===== */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        .navbar-brand .logo-img {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+        }
+        .navbar-brand .logo-img:hover {
+            transform: scale(1.06);
+        }
+        .navbar-brand .brand-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+        .navbar-brand h1 {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin: 0;
+            font-size: 1.7rem;
+        }
+        .navbar-brand h1 .text-dark {
+            color: #1a1a2e !important;
+        }
+        .navbar-brand small {
+            font-weight: 500;
+            opacity: 0.7;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            margin-top: -3px;
+            color: #6c757d !important;
+        }
+
+        .btn-secondary {
+            background-color: #334155;
+            border-color: #334155;
+            color: #fff;
+        }
+        .btn-secondary:hover {
+            background-color: #1e293b;
+            border-color: #1e293b;
+            color: #fff;
+        }
+
+        .btn-outline-light.btn-social:hover {
+            color: #003153 !important;
+            border-color: #003153 !important;
+        }
+        .footer .border-bottom {
+            color: #003153 !important;
+        }
+        .footer .border-bottom:hover {
+            color: #fff !important;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(rgba(0, 49, 83, 0.78), rgba(0, 49, 83, 0.88)),
+                url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=400&fit=crop&crop=center');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 60px 0;
+            margin-bottom: 50px;
+        }
+        .page-header .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8) !important;
+            text-decoration: none;
+        }
+        .page-header .breadcrumb-item a:hover {
+            color: #fff !important;
+        }
+        .page-header .breadcrumb-item.active {
+            color: #fff !important;
+        }
+
+        /* ===== EDIT PROFILE CARD ===== */
+        .edit-card {
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            padding: 35px;
+            background: #fff;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        .edit-card:hover {
+            box-shadow: 0 15px 50px rgba(0, 49, 83, 0.10);
+        }
+        .edit-card .form-control {
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+        }
+        .edit-card .form-control:focus {
+            border-color: #003153;
+            box-shadow: 0 0 0 0.2rem rgba(0, 49, 83, 0.15);
+        }
+        .edit-card .input-group-text {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-right: none;
+            border-radius: 10px 0 0 10px;
+            color: #6c757d;
+        }
+        .edit-card .input-group .form-control {
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Profile picture preview */
+        .avatar-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #003153;
+            padding: 3px;
+            background: #f8f9fa;
+        }
+        .avatar-preview-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #6c757d;
+            border: 4px dashed #003153;
+        }
+
+        /* ===== INTRO OVERLAY (same) ===== */
+        #introOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: #003153;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease;
+        }
+        #introOverlay.active {
+            display: flex;
+        }
+        #introOverlay.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #introOverlay video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+        }
+        .intro-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            animation: introPulse 2s ease-in-out infinite alternate;
+        }
+        .intro-content .intro-logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: introFloat 3s ease-in-out infinite;
+        }
+        .intro-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .intro-content h1 span {
+            color: #6eb5d9;
+        }
+        .intro-content .tagline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        .intro-content .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 2px;
+            margin: 30px auto 0;
+            overflow: hidden;
+        }
+        .intro-content .loader-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: #6eb5d9;
+            border-radius: 2px;
+            animation: loaderFill 2.5s ease-in-out forwards;
+        }
+        .intro-skip {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .intro-skip:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.04);
+        }
+        @keyframes introPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+        @keyframes introFloat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes loaderFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        @media (max-width: 991.98px) {
+            .intro-content h1 { font-size: 2.5rem; }
+            .intro-content .intro-logo { width: 100px; }
+            .intro-skip { bottom: 20px; right: 20px; padding: 8px 20px; font-size: 0.75rem; }
+        }
+        @media (max-width: 575.98px) {
+            .intro-content h1 { font-size: 1.8rem; }
+            .intro-content .intro-logo { width: 80px; }
+            .intro-content .tagline { font-size: 0.8rem; letter-spacing: 2px; }
+            .intro-skip { bottom: 15px; right: 15px; padding: 6px 16px; font-size: 0.7rem; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 991.98px) {
+            .navbar-brand .logo-img { height: 34px; }
+            .navbar-brand h1 { font-size: 1.3rem; }
+            .navbar-brand small { font-size: 0.5rem !important; letter-spacing: 1.5px; }
+            .navbar-brand { gap: 8px; }
+            .page-header { padding: 40px 0; margin-bottom: 30px; }
+            .edit-card { padding: 25px; }
+            .avatar-preview, .avatar-preview-placeholder { width: 90px; height: 90px; }
+        }
+        @media (max-width: 575.98px) {
+            .navbar-brand .logo-img { height: 28px; }
+            .navbar-brand h1 { font-size: 1.1rem; }
+            .navbar-brand small { display: none !important; }
+            .navbar-brand { gap: 6px; }
+            .page-header { padding: 25px 0; margin-bottom: 20px; }
+            .edit-card { padding: 20px; }
+            .avatar-preview, .avatar-preview-placeholder { width: 70px; height: 70px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+
+        <!-- ===== INTRO OVERLAY ===== -->
+        <div id="introOverlay">
+            <video id="introVideo" muted playsinline>
+                <source src="promo.mp4" type="video/mp4">
+            </video>
+            <div class="intro-content">
+                <img src="1000810916.jpg" alt="HireHub" class="intro-logo">
+                <h1>Hire<span>Hub</span></h1>
+                <p class="tagline">Discover · Apply · Get Hired</p>
+                <div class="loader-bar">
+                    <div class="fill"></div>
+                </div>
+            </div>
+            <button class="intro-skip" id="introSkip">Skip Intro →</button>
+        </div>
+
+        <!-- Spinner -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                <img src="1000810916.jpg" alt="HireHub Logo" class="logo-img">
+                <div class="brand-text ms-1">
+                    <h1 class="m-0 text-primary">Hire<span class="text-dark">Hub</span></h1>
+                    <small class="d-none d-sm-block">DISCOVER · APPLY · GET HIRED</small>
+                </div>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Job List</a>
+                            <a href="job-detail.html" class="dropdown-item">Job Detail</a>
+                            <a href="my-applications.html" class="dropdown-item">My Applications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="category.html" class="dropdown-item">Job Category</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            <a href="Resume.html" class="dropdown-item">Resume Analyzer</a>
+                            <a href="login.html" class="dropdown-item">Login</a>
+                            <a href="register.html" class="dropdown-item">Register</a>
+                            <a href="profile.html" class="dropdown-item">My Profile</a>
+                            <a href="edit-profile.html" class="dropdown-item active">Edit Profile</a>
+                            <a href="faq.html" class="dropdown-item">FAQ</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
+        </nav>
+
+        <!-- ===== PAGE HEADER ===== -->
+        <div class="container-xxl py-5 page-header mb-5">
+            <div class="container my-4 pt-4 pb-3">
+                <h1 class="display-4 text-white mb-3 animated slideInDown">Edit Profile</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb text-uppercase">
+                        <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Pages</a></li>
+                        <li class="breadcrumb-item text-white active">Edit Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- ===== EDIT PROFILE FORM ===== -->
+        <div class="container-xxl py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="edit-card wow fadeInUp" data-wow-delay="0.1s">
+                            <h3 class="mb-4"><i class="fas fa-user-edit me-2 text-primary"></i>Update Your Information</h3>
+                            <form id="editProfileForm" onsubmit="return validateAndUpdate()">
+
+                                <!-- ===== PROFILE PICTURE ===== -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Profile Picture</label>
+                                    <div class="d-flex align-items-center flex-wrap gap-3">
+                                        <div>
+                                            <img id="avatarPreview" src="" alt="Preview" class="avatar-preview" style="display:none;">
+                                            <div id="avatarPlaceholder" class="avatar-preview-placeholder">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <input type="file" class="form-control" id="avatarInput" accept="image/*">
+                                            <small class="text-muted">Upload a square image (recommended 300x300)</small>
+                                            <br>
+                                            <button type="button" class="btn btn-outline-danger btn-sm mt-1" onclick="removeAvatar()">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <!-- Full Name -->
+                                <div class="mb-3">
+                                    <label for="fullname" class="form-label fw-semibold">Full Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        <input type="text" class="form-control" id="fullname" placeholder="Enter your full name" required>
+                                    </div>
+                                    <div id="nameError" class="text-danger small mt-1" style="display:none;">Name must be at least 2 characters.</div>
+                                </div>
+
+                                <!-- Email (readonly) -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label fw-semibold">Email Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        <input type="email" class="form-control" id="email" placeholder="Email" readonly>
+                                    </div>
+                                    <small class="text-muted">Email cannot be changed.</small>
+                                </div>
+
+                                <!-- User Type (readonly) -->
+                                <div class="mb-3">
+                                    <label for="user_type" class="form-label fw-semibold">Account Type</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                                        <input type="text" class="form-control" id="user_type" placeholder="User type" readonly>
+                                    </div>
+                                </div>
+
+                                <!-- New Password -->
+                                <div class="mb-3">
+                                    <label for="new_password" class="form-label fw-semibold">New Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" id="new_password" placeholder="Leave blank to keep current">
+                                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()" style="border-radius: 0 10px 10px 0;">
+                                            <i class="fas fa-eye" id="eyeIcon"></i>
+                                        </button>
+                                    </div>
+                                    <small class="text-muted">Min 6 characters if changing.</small>
+                                    <div id="passError" class="text-danger small mt-1" style="display:none;">Password must be at least 6 characters.</div>
+                                </div>
+
+                                <!-- Confirm New Password -->
+                                <div class="mb-3">
+                                    <label for="confirm_password" class="form-label fw-semibold">Confirm New Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-check-circle"></i></span>
+                                        <input type="password" class="form-control" id="confirm_password" placeholder="Confirm new password">
+                                    </div>
+                                    <div id="confirmError" class="text-danger small mt-1" style="display:none;">Passwords do not match.</div>
+                                </div>
+
+                                <hr>
+
+                                <!-- Buttons -->
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-primary w-50 py-3">
+                                        <i class="fas fa-save me-2"></i>Save Changes
+                                    </button>
+                                    <a href="profile.html" class="btn btn-outline-secondary w-50 py-3">
+                                        <i class="fas fa-times me-2"></i>Cancel
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Company</h5>
+                        <a class="btn btn-link text-white-50" href="about.html">About Us</a>
+                        <a class="btn btn-link text-white-50" href="contact.html">Contact Us</a>
+                        <a class="btn btn-link text-white-50" href="#">Privacy Policy</a>
+                        <a class="btn btn-link text-white-50" href="#">Terms & Condition</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Quick Links</h5>
+                        <a class="btn btn-link text-white-50" href="job-list.html">Job List</a>
+                        <a class="btn btn-link text-white-50" href="Resume.html">Resume Analyzer</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Contact</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@hirehub.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Newsletter</h5>
+                        <p>Subscribe for weekly job alerts and career advice.</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">HireHub</a>, All Right Reserved.
+                            <br>Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                            <br>Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="index.html">Home</a>
+                                <a href="#">Cookies</a>
+                                <a href="#">Help</a>
+                                <a href="#">FQAs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- ===== INTRO OVERLAY SCRIPT ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('introOverlay');
+            const skipBtn = document.getElementById('introSkip');
+            const video = document.getElementById('introVideo');
+
+            const navEntries = performance.getEntriesByType('navigation');
+            const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+            const introShown = sessionStorage.getItem('introShown');
+            const shouldShowIntro = !introShown || isReload;
+
+            if (shouldShowIntro) {
+                overlay.classList.add('active');
+                if (video) video.play().catch(() => {});
+                const dismissTimer = setTimeout(() => dismissIntro(), 3500);
+                skipBtn.addEventListener('click', function() {
+                    clearTimeout(dismissTimer);
+                    dismissIntro();
+                });
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay || e.target === video) {
+                        clearTimeout(dismissTimer);
+                        dismissIntro();
+                    }
+                });
+
+                function dismissIntro() {
+                    overlay.classList.add('hide');
+                    setTimeout(() => {
+                        overlay.classList.remove('active');
+                        overlay.classList.remove('hide');
+                        if (video) video.pause();
+                    }, 800);
+                }
+                sessionStorage.setItem('introShown', 'true');
+            } else {
+                overlay.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- ===== EDIT PROFILE SCRIPT ===== -->
+    <script>
+        // Load user data and saved avatar
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) {
+                alert('Please login first.');
+                window.location.href = 'login.html';
+                return;
+            }
+            document.getElementById('fullname').value = user.fullname || '';
+            document.getElementById('email').value = user.email || '';
+            document.getElementById('user_type').value = user.user_type === 'employer' ? 'Employer' : 'Job Seeker';
+
+            // Load avatar
+            const savedAvatar = localStorage.getItem('profileImage');
+            if (savedAvatar) {
+                const img = document.getElementById('avatarPreview');
+                img.src = savedAvatar;
+                img.style.display = 'block';
+                document.getElementById('avatarPlaceholder').style.display = 'none';
+            } else {
+                document.getElementById('avatarPreview').style.display = 'none';
+                document.getElementById('avatarPlaceholder').style.display = 'flex';
+            }
+        });
+
+        // Handle file input
+        document.getElementById('avatarInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = document.getElementById('avatarPreview');
+                    img.src = event.target.result;
+                    img.style.display = 'block';
+                    document.getElementById('avatarPlaceholder').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Remove avatar
+        function removeAvatar() {
+            document.getElementById('avatarPreview').src = '';
+            document.getElementById('avatarPreview').style.display = 'none';
+            document.getElementById('avatarPlaceholder').style.display = 'flex';
+            document.getElementById('avatarInput').value = '';
+            localStorage.removeItem('profileImage');
+        }
+
+        // Toggle password visibility
+        function togglePassword() {
+            const pwd = document.getElementById('new_password');
+            const eye = document.getElementById('eyeIcon');
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                eye.className = 'fas fa-eye-slash';
+            } else {
+                pwd.type = 'password';
+                eye.className = 'fas fa-eye';
+            }
+        }
+
+        function validateAndUpdate() {
+            const fullname = document.getElementById('fullname').value.trim();
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            let valid = true;
+
+            // Validate name
+            if (fullname.length < 2) {
+                document.getElementById('nameError').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('nameError').style.display = 'none';
+            }
+
+            // Validate password
+            if (newPassword.length > 0) {
+                if (newPassword.length < 6) {
+                    document.getElementById('passError').style.display = 'block';
+                    valid = false;
+                } else {
+                    document.getElementById('passError').style.display = 'none';
+                }
+                if (newPassword !== confirmPassword) {
+                    document.getElementById('confirmError').style.display = 'block';
+                    valid = false;
+                } else {
+                    document.getElementById('confirmError').style.display = 'none';
+                }
+            } else {
+                document.getElementById('passError').style.display = 'none';
+                document.getElementById('confirmError').style.display = 'none';
+            }
+
+            if (!valid) return false;
+
+            // Save avatar if present
+            const avatarSrc = document.getElementById('avatarPreview').src;
+            if (avatarSrc && avatarSrc.startsWith('data:image')) {
+                localStorage.setItem('profileImage', avatarSrc);
+            } else if (!avatarSrc || avatarSrc === '') {
+                // If the preview is empty, remove saved image
+                localStorage.removeItem('profileImage');
+            }
+
+            // Update user name in localStorage
+            const user = JSON.parse(localStorage.getItem('user'));
+            user.fullname = fullname;
+            localStorage.setItem('user', JSON.stringify(user));
+
+            const btn = document.querySelector('button[type="submit"]');
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Saving...';
+            btn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                alert('✅ Profile updated successfully!');
+                window.location.href = 'profile.html';
+            }, 1000);
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>

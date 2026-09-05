@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HireHub - Frequently Asked Questions</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* ===== PRUSSIAN BLUE PRIMARY ===== */
+        .text-primary,
+        .navbar-brand h1.text-primary,
+        .cat-item i.text-primary,
+        .job-item .text-primary,
+        .btn-link.text-primary,
+        .fa-check.text-primary,
+        .nav-link.active,
+        .dropdown-item.active,
+        .dropdown-item:active,
+        .bg-white.border.rounded i.text-primary,
+        .footer .btn-link:hover {
+            color: #003153 !important;
+        }
+
+        .bg-primary,
+        .btn-primary,
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary:focus,
+        .navbar .btn-primary,
+        .btn-primary.disabled,
+        .btn-primary:disabled,
+        .spinner-border.text-primary,
+        .page-header.bg-dark {
+            background-color: #003153 !important;
+            border-color: #003153 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #002244 !important;
+            border-color: #002244 !important;
+        }
+
+        .btn-outline-primary {
+            color: #003153 !important;
+            border-color: #003153 !important;
+        }
+        .btn-outline-primary:hover {
+            background-color: #003153 !important;
+            border-color: #003153 !important;
+            color: #fff !important;
+        }
+
+        .border-primary {
+            border-color: #003153 !important;
+        }
+
+        .navbar .navbar-nav .nav-link.active,
+        .navbar .navbar-nav .nav-link:hover {
+            color: #003153 !important;
+        }
+
+        .dropdown-item:focus,
+        .dropdown-item:hover {
+            background-color: #d4e0ed;
+            color: #003153 !important;
+        }
+
+        .btn-dark {
+            background-color: #1e293b !important;
+            border-color: #1e293b !important;
+        }
+        .btn-dark:hover {
+            background-color: #0f172a !important;
+            border-color: #0f172a !important;
+        }
+
+        /* ===== NAVBAR BRAND ===== */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        .navbar-brand .logo-img {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+        }
+        .navbar-brand .logo-img:hover {
+            transform: scale(1.06);
+        }
+        .navbar-brand .brand-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+        .navbar-brand h1 {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin: 0;
+            font-size: 1.7rem;
+        }
+        .navbar-brand h1 .text-dark {
+            color: #1a1a2e !important;
+        }
+        .navbar-brand small {
+            font-weight: 500;
+            opacity: 0.7;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            margin-top: -3px;
+            color: #6c757d !important;
+        }
+
+        .btn-secondary {
+            background-color: #334155;
+            border-color: #334155;
+            color: #fff;
+        }
+        .btn-secondary:hover {
+            background-color: #1e293b;
+            border-color: #1e293b;
+            color: #fff;
+        }
+
+        .btn-outline-light.btn-social:hover {
+            color: #003153 !important;
+            border-color: #003153 !important;
+        }
+        .footer .border-bottom {
+            color: #003153 !important;
+        }
+        .footer .border-bottom:hover {
+            color: #fff !important;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(rgba(0, 49, 83, 0.78), rgba(0, 49, 83, 0.88)),
+                url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=400&fit=crop&crop=center');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 60px 0;
+            margin-bottom: 50px;
+        }
+        .page-header .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8) !important;
+            text-decoration: none;
+        }
+        .page-header .breadcrumb-item a:hover {
+            color: #fff !important;
+        }
+        .page-header .breadcrumb-item.active {
+            color: #fff !important;
+        }
+
+        /* ===== FAQ ACCORDION ===== */
+        .faq-card {
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            padding: 35px;
+            background: #fff;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        .faq-card:hover {
+            box-shadow: 0 15px 50px rgba(0, 49, 83, 0.10);
+        }
+        .accordion-item {
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .accordion-item:last-child {
+            margin-bottom: 0;
+        }
+        .accordion-button {
+            padding: 18px 20px;
+            font-weight: 600;
+            color: #003153;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 10px !important;
+        }
+        .accordion-button:not(.collapsed) {
+            background: #e9ecef;
+            color: #002244;
+            box-shadow: none;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: #003153;
+        }
+        .accordion-body {
+            padding: 20px 20px 15px;
+            color: #4a5568;
+        }
+        .accordion-button i {
+            margin-right: 10px;
+            color: #003153;
+        }
+
+        /* ===== FLOATING HELP BUTTON ===== */
+        .help-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #003153;
+            color: #fff;
+            border: none;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(0, 49, 83, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .help-btn:hover {
+            transform: scale(1.1);
+            background: #002244;
+            box-shadow: 0 6px 30px rgba(0, 49, 83, 0.5);
+        }
+        .help-btn img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        /* ===== HELP MODAL ===== */
+        .help-modal .modal-content {
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        .help-modal .modal-header {
+            border-bottom: 2px solid #003153;
+            background: #f8f9fa;
+            border-radius: 16px 16px 0 0;
+        }
+        .help-modal .modal-header h5 {
+            color: #003153;
+            font-weight: 700;
+        }
+        .help-modal .tip-item {
+            padding: 15px;
+            border-left: 4px solid #003153;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        .help-modal .tip-item:hover {
+            background: #e9ecef;
+        }
+        .help-modal .tip-item i {
+            color: #003153;
+            font-size: 1.2rem;
+            margin-right: 12px;
+        }
+
+        /* ===== INTRO OVERLAY ===== */
+        #introOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: #003153;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease;
+        }
+        #introOverlay.active {
+            display: flex;
+        }
+        #introOverlay.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #introOverlay video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+        }
+        .intro-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            animation: introPulse 2s ease-in-out infinite alternate;
+        }
+        .intro-content .intro-logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: introFloat 3s ease-in-out infinite;
+        }
+        .intro-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .intro-content h1 span {
+            color: #6eb5d9;
+        }
+        .intro-content .tagline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        .intro-content .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 2px;
+            margin: 30px auto 0;
+            overflow: hidden;
+        }
+        .intro-content .loader-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: #6eb5d9;
+            border-radius: 2px;
+            animation: loaderFill 2.5s ease-in-out forwards;
+        }
+        .intro-skip {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .intro-skip:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.04);
+        }
+        @keyframes introPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+        @keyframes introFloat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes loaderFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        @media (max-width: 991.98px) {
+            .intro-content h1 { font-size: 2.5rem; }
+            .intro-content .intro-logo { width: 100px; }
+            .intro-skip { bottom: 20px; right: 20px; padding: 8px 20px; font-size: 0.75rem; }
+        }
+        @media (max-width: 575.98px) {
+            .intro-content h1 { font-size: 1.8rem; }
+            .intro-content .intro-logo { width: 80px; }
+            .intro-content .tagline { font-size: 0.8rem; letter-spacing: 2px; }
+            .intro-skip { bottom: 15px; right: 15px; padding: 6px 16px; font-size: 0.7rem; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 991.98px) {
+            .navbar-brand .logo-img { height: 34px; }
+            .navbar-brand h1 { font-size: 1.3rem; }
+            .navbar-brand small { font-size: 0.5rem !important; letter-spacing: 1.5px; }
+            .navbar-brand { gap: 8px; }
+            .page-header { padding: 40px 0; margin-bottom: 30px; }
+            .faq-card { padding: 25px; }
+            .accordion-button { padding: 14px 16px; font-size: 0.95rem; }
+        }
+        @media (max-width: 575.98px) {
+            .navbar-brand .logo-img { height: 28px; }
+            .navbar-brand h1 { font-size: 1.1rem; }
+            .navbar-brand small { display: none !important; }
+            .navbar-brand { gap: 6px; }
+            .page-header { padding: 25px 0; margin-bottom: 20px; }
+            .faq-card { padding: 20px; }
+            .accordion-button { padding: 12px 14px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+
+        <!-- ===== INTRO OVERLAY ===== -->
+        <div id="introOverlay">
+            <video id="introVideo" muted playsinline>
+                <source src="promo.mp4" type="video/mp4">
+            </video>
+            <div class="intro-content">
+                <img src="1000810916.jpg" alt="HireHub" class="intro-logo">
+                <h1>Hire<span>Hub</span></h1>
+                <p class="tagline">Discover · Apply · Get Hired</p>
+                <div class="loader-bar">
+                    <div class="fill"></div>
+                </div>
+            </div>
+            <button class="intro-skip" id="introSkip">Skip Intro →</button>
+        </div>
+
+        <!-- Spinner -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                <img src="1000810916.jpg" alt="HireHub Logo" class="logo-img">
+                <div class="brand-text ms-1">
+                    <h1 class="m-0 text-primary">Hire<span class="text-dark">Hub</span></h1>
+                    <small class="d-none d-sm-block">DISCOVER · APPLY · GET HIRED</small>
+                </div>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="job-list.html" class="dropdown-item">Job List</a>
+                            <a href="job-detail.html" class="dropdown-item">Job Detail</a>
+                            <a href="my-applications.html" class="dropdown-item">My Applications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="category.html" class="dropdown-item">Job Category</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            <a href="Resume.html" class="dropdown-item">Resume Analyzer</a>
+                            <a href="login.html" class="dropdown-item">Login</a>
+                            <a href="register.html" class="dropdown-item">Register</a>
+                            <a href="profile.html" class="dropdown-item">My Profile</a>
+                            <a href="edit-profile.html" class="dropdown-item">Edit Profile</a>
+                            <a href="faq.html" class="dropdown-item active">FAQ</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
+        </nav>
+
+        <!-- ===== PAGE HEADER ===== -->
+        <div class="container-xxl py-5 page-header mb-5">
+            <div class="container my-4 pt-4 pb-3">
+                <h1 class="display-4 text-white mb-3 animated slideInDown">Frequently Asked Questions</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb text-uppercase">
+                        <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white">Pages</a></li>
+                        <li class="breadcrumb-item text-white active">FAQ</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- ===== FAQ ACCORDION ===== -->
+        <div class="container-xxl py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="faq-card wow fadeInUp" data-wow-delay="0.1s">
+                            <h3 class="mb-4"><i class="fas fa-question-circle text-primary me-2"></i>Everything You Need to Know</h3>
+                            <div class="accordion" id="faqAccordion">
+
+                                <!-- Category: Account & Registration -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                            <i class="fas fa-user-plus"></i> How do I create an account?
+                                        </button>
+                                    </h2>
+                                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Click on <strong>Register</strong> in the top menu or visit our <a href="register.html" class="text-primary">Register</a> page. Fill in your full name, email address, and a password (minimum 6 characters). Choose whether you're a job seeker or employer, agree to the terms, and click "Create Account". You'll receive a confirmation email (coming soon) and can start using HireHub immediately.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                            <i class="fas fa-key"></i> I forgot my password. How do I reset it?
+                                        </button>
+                                    </h2>
+                                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            On the <a href="login.html" class="text-primary">Login</a> page, click the "Forgot Password?" link. Enter the email address associated with your account, and we'll send you a reset link. If you don't receive it, check your spam folder or contact our support team.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                            <i class="fas fa-user-edit"></i> Can I update my profile information later?
+                                        </button>
+                                    </h2>
+                                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Absolutely! Once logged in, go to your <a href="profile.html" class="text-primary">Profile</a> page and click the "Edit Profile" button. You can update your name, profile picture, and password. Your email address and account type cannot be changed for security reasons.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                            <i class="fas fa-credit-card"></i> Is HireHub free to use?
+                                        </button>
+                                    </h2>
+                                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Yes! HireHub is completely free for job seekers. Employers can post jobs for free as well (limited to a certain number per month). We believe in making career connections accessible to everyone. Premium features may be added in the future, but the core functionality will always be free.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Category: Job Search -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                            <i class="fas fa-search"></i> How do I search for jobs?
+                                        </button>
+                                    </h2>
+                                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Use the search bar on the homepage or go to the <a href="job-list.html" class="text-primary">Job List</a> page. You can filter by keywords, category, location, and job type (Full‑Time, Part‑Time, Remote, Contract). Browse through the results and click on any job to view details and apply.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                            <i class="fas fa-filter"></i> Can I save jobs for later?
+                                        </button>
+                                    </h2>
+                                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Yes! On each job card or detail page, click the heart icon (❤️) to save the job. Your saved jobs will appear in your profile under "Saved Jobs". You can view them anytime and apply when you're ready.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                                            <i class="fas fa-building"></i> How do I apply for a job?
+                                        </button>
+                                    </h2>
+                                    <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Click the "Apply Now" button on the job detail page. You'll be asked to fill in a short form with your contact details, upload your resume, and optionally include a cover letter. Once submitted, your application will be sent directly to the employer.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Category: Resume Analyzer -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                                            <i class="fas fa-file-alt"></i> What is the Resume Analyzer?
+                                        </button>
+                                    </h2>
+                                    <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            The <a href="Resume.html" class="text-primary">Resume Analyzer</a> is a free tool that reviews your uploaded resume (PDF, DOCX, or TXT) and gives you instant feedback. It checks for relevant skills, experience level, education, and provides personalized suggestions to improve your chances of getting hired.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9">
+                                            <i class="fas fa-lock"></i> Is my resume data safe?
+                                        </button>
+                                    </h2>
+                                    <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Absolutely! The Resume Analyzer runs entirely in your browser – your file is never uploaded to any server. All processing is done client‑side using JavaScript. Your data stays private and secure on your own device.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Category: Employers & Posting Jobs -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10">
+                                            <i class="fas fa-user-tie"></i> How can I post a job as an employer?
+                                        </button>
+                                    </h2>
+                                    <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            After logging in as an employer, click the <strong>Post A Job</strong> button in the top menu. Fill in the job title, company name, job type, location, description, required skills, and application deadline. Once submitted, your job will appear in the job listings for candidates to discover and apply.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq11">
+                                            <i class="fas fa-edit"></i> Can I edit or delete a job posting?
+                                        </button>
+                                    </h2>
+                                    <div id="faq11" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Yes, you can manage your job postings from your employer dashboard (coming soon). For now, please contact our support team if you need to modify or remove a listing.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Category: Security & Privacy -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq12">
+                                            <i class="fas fa-shield-alt"></i> How do you protect my personal data?
+                                        </button>
+                                    </h2>
+                                    <div id="faq12" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            We take privacy seriously. All passwords are hashed using bcrypt, and we use industry‑standard encryption (HTTPS) to secure data transmission. We never share your personal information with third parties without your explicit consent. Read our full <a href="#" class="text-primary">Privacy Policy</a> for details.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq13">
+                                            <i class="fas fa-cookie-bite"></i> Does HireHub use cookies?
+                                        </button>
+                                    </h2>
+                                    <div id="faq13" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Yes, we use essential cookies to keep you logged in and remember your preferences. We don't use tracking cookies for advertising. You can manage your cookie preferences in your browser settings.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Category: Technical & Billing -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq14">
+                                            <i class="fas fa-credit-card"></i> What payment methods do you accept?
+                                        </button>
+                                    </h2>
+                                    <div id="faq14" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Currently, HireHub is free for all users. If we introduce paid features in the future, we'll support major credit/debit cards, PayPal, and other popular payment gateways.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq15">
+                                            <i class="fas fa-undo-alt"></i> What is your refund policy?
+                                        </button>
+                                    </h2>
+                                    <div id="faq15" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Since all services are currently free, there are no refunds to process. If we introduce paid services in the future, we'll have a clear refund policy posted on this page.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Category: Support & Contact -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq16">
+                                            <i class="fas fa-headset"></i> How can I contact customer support?
+                                        </button>
+                                    </h2>
+                                    <div id="faq16" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            You can reach us via the <a href="contact.html" class="text-primary">Contact</a> page. Fill in your name, email, subject, and message, and we'll get back to you within 24–48 hours. For urgent issues, you can also email us directly at <strong>support@hirehub.com</strong>.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq17">
+                                            <i class="fas fa-clock"></i> What are your support hours?
+                                        </button>
+                                    </h2>
+                                    <div id="faq17" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Our support team is available Monday to Friday, 9:00 AM to 6:00 PM (EST). We aim to respond to all queries within one business day. For self‑help, check our comprehensive FAQ page – you might find your answer right here!
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Category: Misc -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq18">
+                                            <i class="fas fa-bullhorn"></i> Can I suggest a new feature?
+                                        </button>
+                                    </h2>
+                                    <div id="faq18" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Absolutely! We love hearing from our users. Use the <a href="contact.html" class="text-primary">Contact</a> page to send us your suggestions, and we'll do our best to incorporate them into future updates.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq19">
+                                            <i class="fas fa-globe"></i> Is HireHub available in other languages?
+                                        </button>
+                                    </h2>
+                                    <div id="faq19" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Currently, HireHub is available in English. We plan to support additional languages in the future based on user demand. Stay tuned!
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq20">
+                                            <i class="fas fa-mobile-alt"></i> Is HireHub mobile-friendly?
+                                        </button>
+                                    </h2>
+                                    <div id="faq20" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            Yes! Our website is fully responsive and works seamlessly on desktops, tablets, and smartphones. You can browse jobs, apply, and manage your account from any device.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== HELP BUTTON (Floating) ===== -->
+        <button class="help-btn" data-bs-toggle="modal" data-bs-target="#helpModal" title="Need Help?">
+            <img src="img/question-mark.png" alt="Help" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22white%22><text x=%225%22 y=%2220%22 font-size=%2220%22 font-weight=%22bold%22>?</text></svg>'">
+        </button>
+
+        <!-- ===== HELP MODAL ===== -->
+        <div class="modal fade help-modal" id="helpModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fas fa-lightbulb me-2"></i>Quick Tips</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="tip-item">
+                            <i class="fas fa-search"></i>
+                            <strong>Find the Perfect Job</strong>
+                            <p class="mb-0 text-muted">Use keywords, location, and category filters to narrow down your search. Save jobs you're interested in for later.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-file-alt"></i>
+                            <strong>Optimize Your Resume</strong>
+                            <p class="mb-0 text-muted">Use our Resume Analyzer tool to get instant feedback on your resume.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-user-check"></i>
+                            <strong>Complete Your Profile</strong>
+                            <p class="mb-0 text-muted">A complete profile attracts more employers. Add your skills and experience.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <strong>Security Tips</strong>
+                            <p class="mb-0 text-muted">Never share your password with anyone. Use a strong, unique password.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-question-circle"></i>
+                            <strong>More Questions?</strong>
+                            <p class="mb-0 text-muted">Visit our <a href="faq.html" class="text-primary">FAQ page</a> for detailed answers to common questions.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-check me-2"></i>Got it!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Company</h5>
+                        <a class="btn btn-link text-white-50" href="about.html">About Us</a>
+                        <a class="btn btn-link text-white-50" href="contact.html">Contact Us</a>
+                        <a class="btn btn-link text-white-50" href="#">Privacy Policy</a>
+                        <a class="btn btn-link text-white-50" href="#">Terms & Condition</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Quick Links</h5>
+                        <a class="btn btn-link text-white-50" href="job-list.html">Job List</a>
+                        <a class="btn btn-link text-white-50" href="Resume.html">Resume Analyzer</a>
+                        <a class="btn btn-link text-white-50" href="faq.html">FAQ</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Contact</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@hirehub.com</p>
+                        <div class="d-flex pt-2">
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Newsletter</h5>
+                        <p>Subscribe for weekly job alerts and career advice.</p>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            &copy; <a class="border-bottom" href="#">HireHub</a>, All Right Reserved.
+                            <br>Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                            <br>Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <div class="footer-menu">
+                                <a href="index.html">Home</a>
+                                <a href="#">Cookies</a>
+                                <a href="#">Help</a>
+                                <a href="faq.html">FQAs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- ===== INTRO OVERLAY SCRIPT ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('introOverlay');
+            const skipBtn = document.getElementById('introSkip');
+            const video = document.getElementById('introVideo');
+
+            const navEntries = performance.getEntriesByType('navigation');
+            const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+            const introShown = sessionStorage.getItem('introShown');
+            const shouldShowIntro = !introShown || isReload;
+
+            if (shouldShowIntro) {
+                overlay.classList.add('active');
+                if (video) video.play().catch(() => {});
+                const dismissTimer = setTimeout(() => dismissIntro(), 3500);
+                skipBtn.addEventListener('click', function() {
+                    clearTimeout(dismissTimer);
+                    dismissIntro();
+                });
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay || e.target === video) {
+                        clearTimeout(dismissTimer);
+                        dismissIntro();
+                    }
+                });
+
+                function dismissIntro() {
+                    overlay.classList.add('hide');
+                    setTimeout(() => {
+                        overlay.classList.remove('active');
+                        overlay.classList.remove('hide');
+                        if (video) video.pause();
+                    }, 800);
+                }
+                sessionStorage.setItem('introShown', 'true');
+            } else {
+                overlay.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

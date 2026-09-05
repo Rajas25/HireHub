@@ -30,9 +30,9 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- Internal CSS: HireHub branding + Prussian Blue (#003153) -->
+    <!-- Internal CSS (enhanced) -->
     <style>
-        /* Prussian Blue: #003153 */
+        /* ===== PRUSSIAN BLUE PRIMARY ===== */
         .text-primary,
         .navbar-brand h1.text-primary,
         .cat-item i.text-primary,
@@ -101,7 +101,7 @@
             border-color: #0f172a !important;
         }
 
-        /* Navbar brand with logo */
+        /* ===== NAVBAR BRAND WITH LOGO ===== */
         .navbar-brand {
             display: flex;
             align-items: center;
@@ -172,7 +172,275 @@
             color: #fff !important;
         }
 
-        /* Responsive */
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            background: linear-gradient(rgba(0, 49, 83, 0.78), rgba(0, 49, 83, 0.88)),
+                url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&h=400&fit=crop&crop=center');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 60px 0;
+            margin-bottom: 50px;
+        }
+
+        .page-header .breadcrumb-item a {
+            color: rgba(255, 255, 255, 0.8) !important;
+            text-decoration: none;
+        }
+        .page-header .breadcrumb-item a:hover {
+            color: #fff !important;
+        }
+        .page-header .breadcrumb-item.active {
+            color: #fff !important;
+        }
+
+        /* ===== HELP BUTTON (FLOATING LEFT) ===== */
+        .help-btn-left {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            z-index: 999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #003153;
+            color: #fff;
+            border: none;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(0, 49, 83, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .help-btn-left:hover {
+            transform: scale(1.1);
+            background: #002244;
+            box-shadow: 0 6px 30px rgba(0, 49, 83, 0.5);
+        }
+        .help-btn-left img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        /* ===== INTRO OVERLAY ===== */
+        #introOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: #003153;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease;
+        }
+        #introOverlay.active {
+            display: flex;
+        }
+        #introOverlay.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #introOverlay video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+        }
+        .intro-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            animation: introPulse 2s ease-in-out infinite alternate;
+        }
+        .intro-content .intro-logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: introFloat 3s ease-in-out infinite;
+        }
+        .intro-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .intro-content h1 span {
+            color: #6eb5d9;
+        }
+        .intro-content .tagline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        .intro-content .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 2px;
+            margin: 30px auto 0;
+            overflow: hidden;
+        }
+        .intro-content .loader-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: #6eb5d9;
+            border-radius: 2px;
+            animation: loaderFill 2.5s ease-in-out forwards;
+        }
+        .intro-skip {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .intro-skip:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.04);
+        }
+        @keyframes introPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+        @keyframes introFloat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes loaderFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* ===== TOAST NOTIFICATIONS ===== */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 99999;
+        }
+        .toast {
+            min-width: 300px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            padding: 12px 20px;
+        }
+        .toast-header {
+            background: none;
+            border-bottom: none;
+            padding: 0 0 5px 0;
+            font-weight: 600;
+            color: #003153;
+        }
+        .toast-body {
+            padding: 0;
+            font-size: 0.95rem;
+        }
+        .toast-success {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+        }
+        .toast-danger {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+        }
+        .toast-warning {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+        }
+        .toast-info {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+        }
+
+        /* ===== APPLY FORM ENHANCEMENTS ===== */
+        .apply-card {
+            border: none;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        .apply-card:hover {
+            box-shadow: 0 12px 40px rgba(0,49,83,0.08);
+        }
+        .apply-card .form-control {
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+        }
+        .apply-card .form-control:focus {
+            border-color: #003153;
+            box-shadow: 0 0 0 0.2rem rgba(0,49,83,0.15);
+        }
+        .apply-card .input-group-text {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-right: none;
+            border-radius: 10px 0 0 10px;
+            color: #6c757d;
+        }
+        .apply-card .input-group .form-control {
+            border-radius: 0 10px 10px 0;
+        }
+        .apply-card .btn-primary {
+            border-radius: 10px;
+            padding: 14px;
+            font-weight: 600;
+        }
+        .apply-card .btn-outline-primary {
+            border-radius: 10px;
+            padding: 14px;
+            font-weight: 600;
+        }
+        .apply-card .btn-outline-primary:hover {
+            color: #fff;
+        }
+        .apply-card .btn-outline-secondary {
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .apply-card .already-applied-badge {
+            background: #e9ecef;
+            color: #495057;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 991.98px) {
             .navbar-brand .logo-img {
                 height: 34px;
@@ -186,6 +454,36 @@
             }
             .navbar-brand {
                 gap: 8px;
+            }
+            .page-header {
+                padding: 40px 0;
+                margin-bottom: 30px;
+            }
+            .intro-content h1 {
+                font-size: 2.5rem;
+            }
+            .intro-content .intro-logo {
+                width: 100px;
+            }
+            .intro-skip {
+                bottom: 20px;
+                right: 20px;
+                padding: 8px 20px;
+                font-size: 0.75rem;
+            }
+            .help-btn-left {
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+                bottom: 80px;
+                left: 20px;
+            }
+            .help-btn-left img {
+                width: 28px;
+                height: 28px;
+            }
+            .apply-card {
+                padding: 20px;
             }
         }
 
@@ -202,12 +500,68 @@
             .navbar-brand {
                 gap: 6px;
             }
+            .page-header {
+                padding: 25px 0;
+                margin-bottom: 20px;
+            }
+            .intro-content h1 {
+                font-size: 1.8rem;
+            }
+            .intro-content .intro-logo {
+                width: 80px;
+            }
+            .intro-content .tagline {
+                font-size: 0.8rem;
+                letter-spacing: 2px;
+            }
+            .intro-skip {
+                bottom: 15px;
+                right: 15px;
+                padding: 6px 16px;
+                font-size: 0.7rem;
+            }
+            .help-btn-left {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 70px;
+                left: 15px;
+            }
+            .help-btn-left img {
+                width: 24px;
+                height: 24px;
+            }
+            .apply-card {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container-xxl bg-white p-0">
+
+        <!-- ===== TOAST CONTAINER ===== -->
+        <div class="toast-container" id="toastContainer"></div>
+
+        <!-- ===== INTRO OVERLAY ===== -->
+        <div id="introOverlay">
+            <video id="introVideo" muted playsinline>
+                <source src="promo.mp4" type="video/mp4">
+            </video>
+            <div class="intro-content">
+                <img src="1000810916.jpg" alt="HireHub" class="intro-logo">
+                <h1>Hire<span>Hub</span></h1>
+                <p class="tagline">Discover · Apply · Get Hired</p>
+                <div class="loader-bar">
+                    <div class="fill"></div>
+                </div>
+            </div>
+            <button class="intro-skip" id="introSkip">Skip Intro →</button>
+        </div>
+        <!-- ===== INTRO OVERLAY END ===== -->
+
+
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -217,7 +571,7 @@
         <!-- Spinner End -->
 
 
-        <!-- Navbar Start -->
+        <!-- ===== NAVBAR START ===== -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <img src="1000810916.jpg" alt="HireHub Logo" class="logo-img">
@@ -238,6 +592,7 @@
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="job-list.html" class="dropdown-item">Job List</a>
                             <a href="job-detail.html" class="dropdown-item active">Job Detail</a>
+                            <a href="my-applications.html" class="dropdown-item">My Applications</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -246,6 +601,10 @@
                             <a href="category.html" class="dropdown-item">Job Category</a>
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             <a href="Resume.html" class="dropdown-item">Resume Analyzer</a>
+                            <a href="login.html" class="dropdown-item">Login</a>
+                            <a href="register.html" class="dropdown-item">Register</a>
+                            <a href="profile.html" class="dropdown-item">My Profile</a>
+                            <a href="faq.html" class="dropdown-item">FAQ</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -253,7 +612,7 @@
                 <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Post A Job<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
-        <!-- Navbar End -->
+        <!-- ===== NAVBAR END ===== -->
 
 
         <!-- Header End -->
@@ -272,99 +631,26 @@
         <!-- Header End -->
 
 
-        <!-- Job Detail Start -->
-        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <!-- ===== JOB DETAIL DYNAMIC CONTENT ===== -->
+        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" id="jobDetailContainer">
             <div class="container">
                 <div class="row gy-5 gx-4">
-                    <div class="col-lg-8">
-                        <div class="d-flex align-items-center mb-5">
-                            <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt="" style="width: 80px; height: 80px;">
-                            <div class="text-start ps-4">
-                                <h3 class="mb-3">Marketing Manager</h3>
-                                <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
-                                <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
-                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
-                            </div>
-                        </div>
-
-                        <div class="mb-5">
-                            <h4 class="mb-3">Job Description</h4>
-                            <p>We are looking for an experienced Marketing Manager to lead our digital marketing efforts. You will be responsible for developing and executing marketing strategies that drive brand awareness, customer acquisition, and revenue growth. The ideal candidate is a creative thinker with a data-driven mindset and a passion for building strong customer relationships.</p>
-                            
-                            <h4 class="mb-3">Key Responsibilities</h4>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Develop and implement comprehensive marketing campaigns across multiple channels</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Analyze market trends and competitor activities to identify new opportunities</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Manage the marketing budget and allocate resources effectively</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Collaborate with product and sales teams to align messaging and launch initiatives</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Track and report on campaign performance using analytics tools</li>
-                            </ul>
-
-                            <h4 class="mb-3">Qualifications</h4>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Bachelor's degree in Marketing, Business, or related field (MBA preferred)</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>5+ years of experience in marketing, with at least 2 years in a managerial role</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Strong understanding of digital marketing platforms (Google Ads, Facebook, LinkedIn, SEO/SEM)</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Excellent communication and leadership skills</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Proven track record of driving measurable results</li>
-                            </ul>
-
-                            <h4 class="mb-3">What We Offer</h4>
-                            <ul class="list-unstyled">
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Competitive salary and performance-based bonuses</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Health, dental, and vision insurance</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Flexible working hours and remote work options</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Professional development and career growth opportunities</li>
-                                <li><i class="fa fa-angle-right text-primary me-2"></i>Fun, collaborative team environment</li>
-                            </ul>
-                        </div>
-        
-                        <div class="">
-                            <h4 class="mb-4">Apply For The Job</h4>
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-12 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Your Name">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <input type="email" class="form-control" placeholder="Your Email">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Portfolio Website">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <input type="file" class="form-control bg-white">
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea class="form-control" rows="5" placeholder="Cover Letter"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary w-100" type="submit">Apply Now</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="col-lg-8" id="jobContent">
+                        <!-- Content will be injected by JavaScript -->
                     </div>
-        
-                    <div class="col-lg-4">
-                        <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
-                            <h4 class="mb-4">Job Summary</h4>
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: 01 Jan, 2045</p>
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: 2 Positions</p>
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: Full Time</p>
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: $85,000 - $110,000/year</p>
-                            <p><i class="fa fa-angle-right text-primary me-2"></i>Location: New York, USA</p>
-                            <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Application Deadline: 15 Feb, 2045</p>
-                        </div>
-                        <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
-                            <h4 class="mb-4">About the Company</h4>
-                            <p class="m-0">HireHub is a leading job platform connecting talented professionals with top employers. We pride ourselves on our collaborative culture, commitment to innovation, and dedication to helping people find meaningful work. Join us and be part of a team that's shaping the future of recruitment.</p>
-                        </div>
+                    <div class="col-lg-4" id="jobSidebar">
+                        <!-- Sidebar will be injected by JavaScript -->
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Job Detail End -->
+        <!-- ===== JOB DETAIL END ===== -->
+
+
+        <!-- ===== FLOATING HELP BUTTON (LEFT) ===== -->
+        <a href="faq.html" class="help-btn-left" title="Need Help? Visit FAQ">
+            <i class="fas fa-question-circle"></i>
+        </a>
 
 
         <!-- Footer Start -->
@@ -422,7 +708,7 @@
                                 <a href="">Home</a>
                                 <a href="">Cookies</a>
                                 <a href="">Help</a>
-                                <a href="">FQAs</a>
+                                <a href="faq.html">FQAs</a>
                             </div>
                         </div>
                     </div>
@@ -446,6 +732,700 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- ===== INTRO OVERLAY SCRIPT ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('introOverlay');
+            const skipBtn = document.getElementById('introSkip');
+            const video = document.getElementById('introVideo');
+
+            const navEntries = performance.getEntriesByType('navigation');
+            const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+            const introShown = sessionStorage.getItem('introShown');
+
+            const shouldShowIntro = !introShown || isReload;
+
+            if (shouldShowIntro) {
+                overlay.classList.add('active');
+
+                if (video) {
+                    video.play().catch(function(err) {
+                        console.log('Autoplay blocked:', err);
+                    });
+                }
+
+                const dismissTimer = setTimeout(function() {
+                    dismissIntro();
+                }, 3500);
+
+                skipBtn.addEventListener('click', function() {
+                    clearTimeout(dismissTimer);
+                    dismissIntro();
+                });
+
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay || e.target === video) {
+                        clearTimeout(dismissTimer);
+                        dismissIntro();
+                    }
+                });
+
+                function dismissIntro() {
+                    overlay.classList.add('hide');
+                    setTimeout(function() {
+                        overlay.classList.remove('active');
+                        overlay.classList.remove('hide');
+                        if (video) {
+                            video.pause();
+                        }
+                    }, 800);
+                }
+
+                sessionStorage.setItem('introShown', 'true');
+
+            } else {
+                overlay.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- ===== TOAST SYSTEM ===== -->
+    <script>
+        function showToast(message, type = 'success', title = '') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type} show`;
+            const iconMap = {
+                success: 'fa-check-circle',
+                danger: 'fa-exclamation-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+            const icon = iconMap[type] || 'fa-bell';
+            toast.innerHTML = `
+                <div class="toast-header">
+                    <i class="fas ${icon} me-2"></i>
+                    <strong class="me-auto">${title || 'HireHub'}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    ${message}
+                </div>
+            `;
+            container.appendChild(toast);
+
+            // Auto-remove after 4 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+
+            // Manual close via button (we handle with data-bs-dismiss but need bootstrap JS)
+            // Since we're not re-initializing, we'll use our own close.
+            const closeBtn = toast.querySelector('.btn-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    toast.classList.remove('show');
+                    setTimeout(() => toast.remove(), 300);
+                });
+            }
+        }
+    </script>
+
+    <!-- ===== JOB DETAIL RENDERER WITH APPLY/SAVE LOGIC ===== -->
+    <script>
+        (function() {
+            // ----- ALL 11 JOBS (same as before) -----
+            const jobs = {
+                1: {
+                    id: 1,
+                    title: 'Senior Software Engineer',
+                    company: 'Google',
+                    logo: 'img/com-logo-1.jpg',
+                    location: 'San Francisco, CA',
+                    type: 'Full Time',
+                    salary: '$120,000 – $160,000 / year',
+                    published: '01 Feb 2045',
+                    deadline: '15 Mar 2045',
+                    vacancy: '2',
+                    description: 'We are looking for a Senior Software Engineer to join our core infrastructure team. You will design, build, and maintain high-performance systems that power our global services. The ideal candidate has deep knowledge of distributed systems, data structures, and algorithms.',
+                    responsibilities: [
+                        'Design and implement scalable microservices',
+                        'Optimize system performance and reliability',
+                        'Collaborate with cross-functional teams',
+                        'Mentor junior engineers',
+                        'Participate in code reviews and architecture discussions'
+                    ],
+                    qualifications: [
+                        'BS in Computer Science or related field (MS preferred)',
+                        '8+ years of experience in software development',
+                        'Expertise in Java, Python, or Go',
+                        'Experience with cloud platforms (AWS, GCP, Azure)',
+                        'Strong problem-solving and communication skills'
+                    ],
+                    benefits: [
+                        'Competitive salary and equity',
+                        'Health, dental, and vision insurance',
+                        'Flexible work hours and remote options',
+                        'Generous vacation and parental leave',
+                        'Professional development budget'
+                    ]
+                },
+                2: {
+                    id: 2,
+                    title: 'Digital Marketing Manager',
+                    company: 'HubSpot',
+                    logo: 'img/com-logo-2.jpg',
+                    location: 'New York, NY',
+                    type: 'Full Time',
+                    salary: '$85,000 – $110,000 / year',
+                    published: '05 Feb 2045',
+                    deadline: '20 Mar 2045',
+                    vacancy: '3',
+                    description: 'We are seeking a dynamic Digital Marketing Manager to lead our marketing campaigns. You will oversee content strategy, social media, SEO, and paid advertising to drive brand awareness and customer acquisition.',
+                    responsibilities: [
+                        'Develop and execute integrated marketing campaigns',
+                        'Manage social media channels and content calendars',
+                        'Optimize SEO and SEM strategies',
+                        'Analyze campaign performance and report insights',
+                        'Collaborate with sales and product teams'
+                    ],
+                    qualifications: [
+                        'Bachelor\'s degree in Marketing, Business, or related field',
+                        '5+ years of digital marketing experience',
+                        'Proficiency in Google Analytics, Facebook Ads, and SEO tools',
+                        'Strong analytical and creative thinking skills',
+                        'Excellent written and verbal communication'
+                    ],
+                    benefits: [
+                        'Competitive salary and bonuses',
+                        'Health and dental insurance',
+                        'Flexible work environment',
+                        'Career development programs',
+                        'Team building events'
+                    ]
+                },
+                3: {
+                    id: 3,
+                    title: 'UX/UI Product Designer',
+                    company: 'Adobe',
+                    logo: 'img/com-logo-3.jpg',
+                    location: 'Austin, TX',
+                    type: 'Full Time',
+                    salary: '$95,000 – $130,000 / year',
+                    published: '10 Feb 2045',
+                    deadline: '10 Apr 2045',
+                    vacancy: '1',
+                    description: 'We are looking for a talented UX/UI Product Designer to craft exceptional digital experiences. You will work closely with product managers and engineers to design user-centered interfaces that solve real problems.',
+                    responsibilities: [
+                        'Create user flows, wireframes, and high-fidelity prototypes',
+                        'Conduct user research and usability testing',
+                        'Collaborate with cross-functional teams',
+                        'Maintain and evolve design systems',
+                        'Advocate for user experience best practices'
+                    ],
+                    qualifications: [
+                        'Bachelor\'s degree in Design, HCI, or related field',
+                        '5+ years of product design experience',
+                        'Proficiency in Figma, Sketch, or Adobe XD',
+                        'Strong portfolio showcasing design process',
+                        'Excellent communication and presentation skills'
+                    ],
+                    benefits: [
+                        'Competitive salary and bonuses',
+                        'Health, dental, and vision insurance',
+                        'Remote work options',
+                        'Professional development budget',
+                        'Creative and collaborative culture'
+                    ]
+                },
+                4: {
+                    id: 4,
+                    title: 'Creative Director',
+                    company: 'WPP',
+                    logo: 'img/com-logo-4.jpg',
+                    location: 'Los Angeles, CA',
+                    type: 'Full Time',
+                    salary: '$130,000 – $175,000 / year',
+                    published: '15 Feb 2045',
+                    deadline: '25 Mar 2045',
+                    vacancy: '1',
+                    description: 'We are seeking a visionary Creative Director to lead our design and creative strategy. You will oversee the creative vision for campaigns, brand identity, and digital experiences across multiple clients.',
+                    responsibilities: [
+                        'Lead and inspire a team of designers, copywriters, and creatives',
+                        'Develop innovative creative concepts and campaigns',
+                        'Ensure brand consistency across all touchpoints',
+                        'Present creative work to clients and stakeholders',
+                        'Stay ahead of industry trends and emerging technologies'
+                    ],
+                    qualifications: [
+                        'Bachelor\'s degree in Design, Advertising, or related field',
+                        '10+ years of creative experience, with 5+ in a leadership role',
+                        'Strong portfolio of award-winning work',
+                        'Excellent communication and presentation skills',
+                        'Experience managing client relationships'
+                    ],
+                    benefits: [
+                        'Competitive salary and performance bonuses',
+                        'Comprehensive health benefits',
+                        'Flexible work environment',
+                        'Leadership development programs',
+                        'Travel and client entertainment opportunities'
+                    ]
+                },
+                5: {
+                    id: 5,
+                    title: 'WordPress Developer',
+                    company: 'Automattic',
+                    logo: 'img/com-logo-5.jpg',
+                    location: 'Remote',
+                    type: 'Full Time',
+                    salary: '$70,000 – $95,000 / year',
+                    published: '20 Feb 2045',
+                    deadline: '05 Apr 2045',
+                    vacancy: '3',
+                    description: 'We are looking for a talented WordPress Developer to build and maintain custom themes and plugins. You will work remotely with a global team, delivering high-quality solutions for our clients.',
+                    responsibilities: [
+                        'Develop custom WordPress themes and plugins',
+                        'Optimize website performance and security',
+                        'Collaborate with designers and project managers',
+                        'Troubleshoot and debug issues',
+                        'Stay updated with WordPress best practices'
+                    ],
+                    qualifications: [
+                        '2+ years of WordPress development experience',
+                        'Proficiency in PHP, HTML, CSS, JavaScript',
+                        'Experience with popular page builders (Elementor, WPBakery)',
+                        'Knowledge of Git and version control',
+                        'Strong problem-solving skills'
+                    ],
+                    benefits: [
+                        'Competitive salary',
+                        'Health and dental insurance',
+                        'Fully remote work',
+                        'Flexible hours',
+                        'Professional development stipend'
+                    ]
+                },
+                6: {
+                    id: 6,
+                    title: 'Full Stack Developer',
+                    company: 'Microsoft',
+                    logo: 'img/com-logo-1.jpg',
+                    location: 'Chicago, IL',
+                    type: 'Full Time',
+                    salary: '$100,000 – $140,000 / year',
+                    published: '25 Feb 2045',
+                    deadline: '15 Mar 2045',
+                    vacancy: '2',
+                    description: 'We are looking for a Full Stack Developer to join our cloud services team. You will build and maintain scalable web applications using modern JavaScript frameworks and cloud technologies.',
+                    responsibilities: [
+                        'Develop front-end interfaces using React or Angular',
+                        'Design and implement RESTful APIs',
+                        'Work with cloud platforms (Azure, AWS)',
+                        'Optimize application performance and security',
+                        'Participate in code reviews and agile ceremonies'
+                    ],
+                    qualifications: [
+                        'BS in Computer Science or related field',
+                        '5+ years of full-stack development experience',
+                        'Proficiency in JavaScript, Node.js, and SQL',
+                        'Experience with cloud services and CI/CD pipelines',
+                        'Strong communication and teamwork skills'
+                    ],
+                    benefits: [
+                        'Competitive salary and bonuses',
+                        'Health, dental, and vision insurance',
+                        'Flexible work arrangements',
+                        'Career growth opportunities',
+                        'Generous paid time off'
+                    ]
+                },
+                7: {
+                    id: 7,
+                    title: 'Data Analyst',
+                    company: 'Amazon',
+                    logo: 'img/com-logo-2.jpg',
+                    location: 'Boston, MA',
+                    type: 'Full Time',
+                    salary: '$75,000 – $100,000 / year',
+                    published: '01 Mar 2045',
+                    deadline: '20 Mar 2045',
+                    vacancy: '2',
+                    description: 'We are seeking a Data Analyst to help us make data-driven decisions. You will analyze large datasets, generate insights, and create visualizations to support business strategies across the company.',
+                    responsibilities: [
+                        'Collect, clean, and analyze complex datasets',
+                        'Create dashboards and reports for stakeholders',
+                        'Identify trends and opportunities for improvement',
+                        'Collaborate with teams to define metrics and KPIs',
+                        'Present findings to leadership'
+                    ],
+                    qualifications: [
+                        'Bachelor\'s degree in Statistics, Math, Economics, or related field',
+                        '3+ years of data analysis experience',
+                        'Proficiency in SQL, Python, or R',
+                        'Experience with Tableau or Power BI',
+                        'Strong analytical and communication skills'
+                    ],
+                    benefits: [
+                        'Competitive salary',
+                        'Health and dental insurance',
+                        'Flexible work hours',
+                        'Professional development opportunities',
+                        'Employee discounts'
+                    ]
+                },
+                8: {
+                    id: 8,
+                    title: 'DevOps Engineer',
+                    company: 'Netflix',
+                    logo: 'img/com-logo-3.jpg',
+                    location: 'Seattle, WA',
+                    type: 'Full Time',
+                    salary: '$110,000 – $150,000 / year',
+                    published: '05 Mar 2045',
+                    deadline: '10 Apr 2045',
+                    vacancy: '1',
+                    description: 'We are looking for a DevOps Engineer to manage our cloud infrastructure and CI/CD pipelines. You will work with development teams to ensure fast, reliable deployment of our applications.',
+                    responsibilities: [
+                        'Design and maintain infrastructure as code (Terraform, CloudFormation)',
+                        'Build and manage CI/CD pipelines (Jenkins, GitLab CI)',
+                        'Monitor system performance and reliability',
+                        'Automate operational tasks',
+                        'Collaborate with developers to optimize deployment processes'
+                    ],
+                    qualifications: [
+                        'BS in Computer Science or related field',
+                        '5+ years of DevOps or SRE experience',
+                        'Expertise in AWS, GCP, or Azure',
+                        'Experience with Docker, Kubernetes, and containerization',
+                        'Strong scripting skills (Python, Bash)'
+                    ],
+                    benefits: [
+                        'Competitive salary and bonuses',
+                        'Health, dental, and vision insurance',
+                        'Remote work options',
+                        'Continuous learning opportunities',
+                        'Free Netflix subscription'
+                    ]
+                },
+                9: {
+                    id: 9,
+                    title: 'Frontend Developer (Part-Time)',
+                    company: 'Slack',
+                    logo: 'img/com-logo-4.jpg',
+                    location: 'Remote',
+                    type: 'Part Time',
+                    salary: '$50 – $70 / hour',
+                    published: '10 Mar 2045',
+                    deadline: '25 Mar 2045',
+                    vacancy: '2',
+                    description: 'We are looking for a part-time Frontend Developer to help us build responsive and accessible web interfaces. You will work on a flexible schedule, collaborating with a distributed team.',
+                    responsibilities: [
+                        'Develop and maintain front-end components with React',
+                        'Implement responsive designs and ensure cross-browser compatibility',
+                        'Optimize application performance',
+                        'Write clean, maintainable code',
+                        'Participate in code reviews'
+                    ],
+                    qualifications: [
+                        '2+ years of front-end development experience',
+                        'Proficiency in JavaScript, React, HTML, CSS',
+                        'Experience with version control (Git)',
+                        'Good understanding of accessibility standards',
+                        'Ability to work independently'
+                    ],
+                    benefits: [
+                        'Competitive hourly rate',
+                        'Flexible working hours',
+                        'Remote work',
+                        'Opportunity to grow into full-time',
+                        'Collaborative team environment'
+                    ]
+                },
+                10: {
+                    id: 10,
+                    title: 'Social Media Specialist',
+                    company: 'Meta',
+                    logo: 'img/com-logo-5.jpg',
+                    location: 'Remote',
+                    type: 'Part Time',
+                    salary: '$30 – $45 / hour',
+                    published: '12 Mar 2045',
+                    deadline: '05 Apr 2045',
+                    vacancy: '3',
+                    description: 'We are looking for a Social Media Specialist to manage our online presence and engage with our community. You will create content, schedule posts, and analyze social media performance.',
+                    responsibilities: [
+                        'Develop and implement social media strategies',
+                        'Create engaging content (posts, stories, videos)',
+                        'Monitor and respond to comments and messages',
+                        'Analyze social media metrics and generate reports',
+                        'Stay updated with social media trends'
+                    ],
+                    qualifications: [
+                        '2+ years of social media management experience',
+                        'Proficiency with major platforms (Instagram, LinkedIn, Twitter, TikTok)',
+                        'Strong writing and visual communication skills',
+                        'Experience with social media management tools (Buffer, Hootsuite)',
+                        'Creative and detail-oriented'
+                    ],
+                    benefits: [
+                        'Flexible hours',
+                        'Remote work',
+                        'Creative freedom',
+                        'Opportunity to grow with the company',
+                        'Collaborative team culture'
+                    ]
+                },
+                11: {
+                    id: 11,
+                    title: 'Content Writer',
+                    company: 'Medium',
+                    logo: 'img/com-logo-1.jpg',
+                    location: 'Remote',
+                    type: 'Part Time',
+                    salary: '$25 – $40 / hour',
+                    published: '15 Mar 2045',
+                    deadline: '15 Apr 2045',
+                    vacancy: '2',
+                    description: 'We are seeking a talented Content Writer to produce high-quality articles, blog posts, and website copy. You will write on a variety of topics, from technology to lifestyle, with a focus on engaging and informative content.',
+                    responsibilities: [
+                        'Research and write well-structured articles',
+                        'Edit and proofread content for clarity and grammar',
+                        'Collaborate with editors and designers',
+                        'Optimize content for SEO',
+                        'Meet deadlines and manage multiple projects'
+                    ],
+                    qualifications: [
+                        '2+ years of professional writing experience',
+                        'Excellent command of English grammar and style',
+                        'Ability to write for different audiences and platforms',
+                        'Familiarity with SEO best practices',
+                        'Strong attention to detail'
+                    ],
+                    benefits: [
+                        'Flexible schedule',
+                        'Remote work',
+                        'Exposure to diverse topics',
+                        'Opportunity to build a portfolio',
+                        'Supportive editorial team'
+                    ]
+                }
+            };
+
+            // ----- Helper: get URL parameter -----
+            function getParam(name) {
+                const url = new URL(window.location.href);
+                return url.searchParams.get(name);
+            }
+
+            // ----- LocalStorage helpers for applied/saved -----
+            function getAppliedIds() {
+                return JSON.parse(localStorage.getItem('appliedJobs') || '[]');
+            }
+
+            function setAppliedIds(ids) {
+                localStorage.setItem('appliedJobs', JSON.stringify(ids));
+            }
+
+            function getSavedIds() {
+                return JSON.parse(localStorage.getItem('savedJobs') || '[]');
+            }
+
+            function setSavedIds(ids) {
+                localStorage.setItem('savedJobs', JSON.stringify(ids));
+            }
+
+            // ----- Render job detail with action handlers -----
+            function renderJob() {
+                const id = parseInt(getParam('id'));
+                const job = jobs[id];
+
+                const container = document.getElementById('jobContent');
+                const sidebar = document.getElementById('jobSidebar');
+
+                if (!job) {
+                    container.innerHTML = `
+                        <div class="alert alert-warning">
+                            <h4>Job not found</h4>
+                            <p>The job you are looking for does not exist. <a href="job-list.html">Go back to job list</a></p>
+                        </div>
+                    `;
+                    sidebar.innerHTML = '';
+                    return;
+                }
+
+                // Check if already applied
+                const appliedIds = getAppliedIds();
+                const isApplied = appliedIds.includes(job.id);
+                const savedIds = getSavedIds();
+                const isSaved = savedIds.includes(job.id);
+
+                // --- Main content with enhanced apply form UI ---
+                container.innerHTML = `
+                    <div class="d-flex align-items-center mb-5">
+                        <img class="flex-shrink-0 img-fluid border rounded" src="${job.logo}" alt="" style="width: 80px; height: 80px;">
+                        <div class="text-start ps-4">
+                            <h3 class="mb-3">${job.title}</h3>
+                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>${job.location}</span>
+                            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>${job.type}</span>
+                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>${job.salary}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <h4 class="mb-3">Job Description</h4>
+                        <p>${job.description}</p>
+
+                        <h4 class="mb-3">Key Responsibilities</h4>
+                        <ul class="list-unstyled">
+                            ${job.responsibilities.map(r => `<li><i class="fa fa-angle-right text-primary me-2"></i>${r}</li>`).join('')}
+                        </ul>
+
+                        <h4 class="mb-3">Qualifications</h4>
+                        <ul class="list-unstyled">
+                            ${job.qualifications.map(q => `<li><i class="fa fa-angle-right text-primary me-2"></i>${q}</li>`).join('')}
+                        </ul>
+
+                        <h4 class="mb-3">What We Offer</h4>
+                        <ul class="list-unstyled">
+                            ${job.benefits.map(b => `<li><i class="fa fa-angle-right text-primary me-2"></i>${b}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="apply-card">
+                        <h4 class="mb-4">Apply For The Job</h4>
+                        <form id="applyForm">
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        <input type="text" class="form-control" placeholder="Your Name">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        <input type="email" class="form-control" placeholder="Your Email">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                                        <input type="text" class="form-control" placeholder="Portfolio Website">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-file"></i></span>
+                                        <input type="file" class="form-control bg-white">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+                                        <textarea class="form-control" rows="4" placeholder="Cover Letter"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex gap-2 flex-wrap">
+                                    <button type="submit" class="btn btn-primary flex-grow-1" id="applyBtn" ${isApplied ? 'disabled' : ''}>
+                                        ${isApplied ? 'Already Applied' : '<i class="fas fa-paper-plane me-2"></i>Apply Now'}
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" id="saveBtn" style="width:60px;" title="${isSaved ? 'Unsave' : 'Save'}">
+                                        <i class="fas fa-heart" style="color: ${isSaved ? '#dc3545' : '#6c757d'};"></i>
+                                    </button>
+                                </div>
+                                ${isApplied ? '<div class="col-12"><span class="already-applied-badge"><i class="fas fa-check-circle me-2 text-success"></i>You have already applied to this job.</span></div>' : ''}
+                            </div>
+                        </form>
+                    </div>
+                `;
+
+                // ---- Attach event listeners ----
+
+                // Apply button
+                const applyBtn = document.getElementById('applyBtn');
+                if (applyBtn && !isApplied) {
+                    applyBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Add to applied list
+                        let applied = getAppliedIds();
+                        if (!applied.includes(job.id)) {
+                            applied.push(job.id);
+                            setAppliedIds(applied);
+                            showToast('✅ Application submitted successfully!', 'success', 'Success');
+                            // Redirect after a short delay
+                            setTimeout(() => {
+                                window.location.href = 'my-applications.html';
+                            }, 1200);
+                        } else {
+                            showToast('You already applied to this job.', 'warning', 'Already Applied');
+                        }
+                    });
+                }
+
+                // Save/Unsave button
+                const saveBtn = document.getElementById('saveBtn');
+                if (saveBtn) {
+                    saveBtn.addEventListener('click', function() {
+                        let saved = getSavedIds();
+                        const icon = this.querySelector('i');
+                        if (saved.includes(job.id)) {
+                            saved = saved.filter(id => id !== job.id);
+                            setSavedIds(saved);
+                            icon.style.color = '#6c757d';
+                            showToast('Removed from saved jobs.', 'info', 'Saved');
+                        } else {
+                            saved.push(job.id);
+                            setSavedIds(saved);
+                            icon.style.color = '#dc3545';
+                            showToast('✅ Job saved!', 'success', 'Saved');
+                        }
+                    });
+                }
+
+                // --- Sidebar ---
+                sidebar.innerHTML = `
+                    <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                        <h4 class="mb-4">Job Summary</h4>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: ${job.published}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: ${job.vacancy} Positions</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature: ${job.type}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: ${job.salary}</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Location: ${job.location}</p>
+                        <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Application Deadline: ${job.deadline}</p>
+                    </div>
+                    <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+                        <h4 class="mb-4">About the Company</h4>
+                        <p class="m-0">${job.company} is a leader in its field, known for innovation and a collaborative culture. We are committed to hiring the best talent and fostering an inclusive environment where everyone can thrive.</p>
+                    </div>
+                `;
+            }
+
+            // Run when DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', renderJob);
+            } else {
+                renderJob();
+            }
+
+            // ---- Show notifications based on login state ----
+            // Check if user just logged in/out (using sessionStorage flags)
+            document.addEventListener('DOMContentLoaded', function() {
+                const loginMsg = sessionStorage.getItem('loginMessage');
+                if (loginMsg) {
+                    showToast(loginMsg, 'success', 'Welcome');
+                    sessionStorage.removeItem('loginMessage');
+                }
+                const logoutMsg = sessionStorage.getItem('logoutMessage');
+                if (logoutMsg) {
+                    showToast(logoutMsg, 'info', 'Goodbye');
+                    sessionStorage.removeItem('logoutMessage');
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>
