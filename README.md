@@ -56,3 +56,4 @@ hirehub/
 
 <img width="1767" height="987" alt="image" src="https://github.com/user-attachments/assets/2c2eb528-1203-4bd0-9e17-b429a571770a" />
 
+
