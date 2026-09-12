@@ -1,59 +1,97 @@
 # 🚀 HireHub – Job Portal Platform
 
-**HireHub** is a modern, fully responsive job portal website designed to connect job seekers with employers. It features a clean UI, job listings, resume analysis, testimonials, and a smart intro overlay that plays on first visit and page refresh—just like LinkedIn.
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
-<img width="1667" height="1006" alt="image" src="https://github.com/user-attachments/assets/593c681c-5b15-45aa-ae53-6bcfbd570935" />
+**HireHub** is a modern, responsive job portal platform designed to connect job seekers with employment opportunities.
 
-
----
-
-## ✨ Features
-
-- 🏠 **Landing Page** – Hero carousel, category explorer, job search bar
-- 📄 **Job Listings** – Filter by Featured, Full‑Time, Part‑Time
-- 📝 **Job Detail** – Full job description, application form, company info
-- 👥 **About Us** – Team introduction with background image
-- 💬 **Testimonials** – Client feedback carousel
-- 📊 **Resume Analyzer** – Upload PDF/DOCX/TXT, get instant skill analysis and improvement tips (client‑side)
-- 📞 **Contact** – Contact form (non‑functional, ready for backend integration)
-- 🎬 **Smart Intro Overlay** – Plays a promotional video on first visit and page refresh, but not during normal navigation (sessionStorage)
+The platform provides job searching, job details, resume analysis, authentication, user profiles, application tracking, saved jobs, interview-related support, testimonials, FAQs, and interactive UI features.
 
 ---
 
-## 🛠️ Tech Stack
+## 📖 Table of Contents
 
-- **HTML5** – Semantic structure
-- **CSS3** – Custom styling with Prussian blue (#003153) theme
-- **Bootstrap 5** – Responsive grid and components
-- **JavaScript (ES6)** – Interactivity, intro overlay logic, resume parser
-- **Libraries**:
-  - [Font Awesome](https://fontawesome.com/) – Icons
-  - [Owl Carousel](https://owlcarousel2.github.io/OwlCarousel2/) – Testimonials & hero carousel
-  - [Animate.css](https://animate.style/) – Animations
-  - [PDF.js](https://mozilla.github.io/pdf.js/) – PDF text extraction (client‑side)
-  - [Mammoth.js](https://github.com/mwilliamson/mammoth.js) – DOCX text extraction
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [🚀 Getting Started](#-getting-started)
+- [🔧 Backend Setup](#-backend-setup)
+- [🗄️ Database Setup](#️-database-setup)
+- [🔐 Authentication](#-authentication)
+- [📊 Resume Analyzer](#-resume-analyzer)
+- [🎬 Smart Intro Overlay](#-smart-intro-overlay)
+- [📋 Application Tracking](#-application-tracking)
+- [🧠 Heuristic Evaluation](#-heuristic-evaluation)
+- [⌨️ Keyboard Shortcuts](#️-keyboard-shortcuts)
+- [🎨 Customization](#-customization)
+- [🧪 Testing](#-testing)
+- [🚀 Future Enhancements](#-future-enhancements)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [📬 Contact](#-contact)
 
 ---
 
-## 📁 Project Structure
-hirehub/
-├── index.html # Home page
-├── about.html # About us
-├── job-list.html # Job listings
-├── job-detail.html # Job detail view
-├── testimonial.html # Testimonials
-├── contact.html # Contact page
-├── Resume.html # Resume Analyzer
-├── 404.html → Resume.html # (renamed)
-├── promo.mp4 # Intro video
-├── 1000810916.jpg # Logo image
-├── img/ # All other images (carousel, company logos, about, etc.)
-├── css/ # Bootstrap and custom styles
-├── js/ # Custom JavaScript (main.js)
-├── lib/ # Third‑party libraries
-└── README.md # This file
+# ✨ Features
 
+## 🏠 Landing Page
 
-<img width="1767" height="987" alt="image" src="https://github.com/user-attachments/assets/2c2eb528-1203-4bd0-9e17-b429a571770a" />
+- Responsive homepage
+- Hero section with carousel
+- Job search interface
+- Job categories
+- Featured jobs
+- Testimonials
+- FAQ preview
+- Call-to-action sections
+- Floating help button
+- Smart promotional intro overlay
 
+---
 
+## 💼 Job Listings
+
+Users can browse available job opportunities.
+
+Features include:
+
+- Featured jobs
+- Full-time jobs
+- Part-time jobs
+- Job category filtering
+- Company information
+- Job location
+- Salary information
+- Job type
+- Job detail navigation
+
+---
+
+## 📄 Job Details
+
+Each job has a dedicated details page.
+
+The page can display:
+
+- Job title
+- Company
+- Location
+- Salary
+- Job type
+- Job description
+- Responsibilities
+- Required qualifications
+- Required skills
+- Benefits
+- Application form
+
+Job information can be dynamically displayed using the job ID passed through the URL.
+
+Example:
+
+```text
+job-detail.html?id=1
